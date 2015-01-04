@@ -1,0 +1,31 @@
+{
+  "name": "iitk-general-elections",
+  "version": "0.0.1",
+  "description": "Voting system for IITK General Elections",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "IITK",
+    "elections",
+    "voting"
+  ],
+  "window": {
+      "toolbar": false,
+      "width": 800,
+      "height": 500,
+      "min_width": 400,
+      "min_height": 200,
+      "max_width": 800,
+      "max_height": 600,
+      "position": "mouse"
+  },
+  "webkit": {
+      "plugin": false,
+      "java" : false,
+      "page-cache" : false
+  },
+  "author": "Srijan R Shetty <srijan.shetty+code@gmail.com> (http://srijanshetty.in/)",
+  "license": "MIT"
+}

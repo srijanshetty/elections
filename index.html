@@ -1,0 +1,47 @@
+<!-- <!DOCTYPE html> -->
+
+<html>
+	<head>
+        <title>Hello</title>
+
+
+        <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css">
+        <style>
+            .navbar { border-radius:0; }
+        </style>
+
+        <script src="./lib/angularjs/angular.min.js"></script>
+        <script src="./lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="./scripts/main.js"></script>
+    </head>
+
+    <body ng-app="electionsApp">
+
+        <!-- NAVIGATION -->
+        <nav class="navbar navbar-inverse" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" ui-sref="#">Election Council</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="home">Home</a></li>
+                <li><a ui-sref="about">About</a></li>
+            </ul>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <div class="container">
+            <ui-view></ui-view>
+        </div>
+
+        <!-- TEMPLATES -->
+        <!-- HOME -->
+        <script type="text/ng-template" id="/home.html">
+            <h1> Hello </h1>
+        </script>
+
+        <!-- ABOUT -->
+        <script type="text/ng-template" id="/about.html">
+            <h1>About</h1>
+        </script>
+    </body>
+</html>
