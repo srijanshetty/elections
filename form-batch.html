@@ -1,0 +1,22 @@
+<div class="status-buttons text-center">
+    <a class="active"><span>{{code}}</span>{{name}}</a>
+</div>
+
+<div class="text-center">
+    <div class="form-group">
+        <div class="radio" ng-repeat="batch in form.batches">
+            <label>
+                <input type="radio" ng-model="form.formData.type" value="{{batch.code}}" checked> {{ batch.fullName }}
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-6 col-xs-offset-3">
+        <a ui-sref="form.senator" class="btn btn-block btn-info">
+            Next Section
+            <span class="glyphicon glyphicon-circle-arrow-right" ></span>
+        </a>
+    </div>
+</div>

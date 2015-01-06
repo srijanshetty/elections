@@ -1,0 +1,17 @@
+<!-- form.html -->
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <div class="form-container">
+            <div class="page-header text-center">
+                <h2> General Election's 2015 </h2>
+            </div>
+
+            <!-- use ng-submit to catch the form submission and use our Angular function -->
+            <form id="elections-form" ng-submit="form.processForm()">
+                <!-- our nested state views will be injected here -->
+                <div id="form-views" ui-view></div>
+            </form>
+
+        </div>
+    </div>
+</div>
