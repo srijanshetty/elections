@@ -1,5 +1,6 @@
 var electionsApp = angular.module('electionsApp', ['ui.router']);
 
+// Setup the router
 electionsApp.config(function($urlRouterProvider, $stateProvider) {
     $urlRouterProvider.otherwise('/form/batch');
 
@@ -13,32 +14,59 @@ electionsApp.config(function($urlRouterProvider, $stateProvider) {
         .state('form.batch', {
             url: '/batch',
             templateUrl: 'form-batch.html',
-            controller: function($scope) {
-                $scope.name = 'batch';
-                $scope.code = 1;
-            }
+            stateName: 'batch',
+            stateCode: 2
         })
         .state('form.senator', {
             url: '/senator',
             templateUrl: 'form-senator.html',
-            controller: function($scope) {
-                $scope.name = 'senator';
-                $scope.code = 2;
-            }
+            stateName: 'senator',
+            stateCode: 3
+        })
+        .state('form.president', {
+            url: '/president',
+            templateUrl: 'form-president.html',
+            stateName: 'president',
+            stateCode: 4
+        })
+        .state('form.thanks', {
+            url: '/thanks',
+            templateUrl: 'form-thanks.html',
+            stateName: 'thanks',
+            stateCode: 10
         });
 });
 
-electionsApp.controller('formController', function () {
-    this.formData = {};
+electionsApp.factory('dataFactory', function() {
+    var exports = {};
 
-    this.batches = [
+    exports.batches = [
         { code: 'y10', fullName: 'UG, Y10'},
         { code: 'y11', fullName: 'UG, Y11'},
         { code: 'y12', fullName: 'UG, Y12'},
         { code: 'y13', fullName: 'UG, Y13'}
     ];
 
-    this.processForm = function() {
+    return exports;
+});
+
+electionsApp.controller('formController', function ($rootScope, $state, dataFactory) {
+    var vm = this;
+    vm.formData = {};
+
+    // Obtain the list of batches from the dataFactory
+    vm.batches = dataFactory.batches;
+
+    // Complete the processing of the form
+    vm.processForm = function() {
         window.alert('awesome');
     };
+
+    // Make sure the correct stateName and stateCode are displayed everytime
+    vm.stateName = $state.current.stateName;
+    vm.stateCode = $state.current.stateCode;
+    $rootScope.$on('$stateChangeSuccess', function(events, toState) {
+        vm.stateName = toState.stateName;
+        vm.stateCode = toState.stateCode;
+    });
 });

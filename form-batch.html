@@ -1,12 +1,8 @@
-<div class="status-buttons text-center">
-    <a class="active"><span>{{code}}</span>{{name}}</a>
-</div>
-
 <div class="text-center">
     <div class="form-group">
         <div class="radio" ng-repeat="batch in form.batches">
             <label>
-                <input type="radio" ng-model="form.formData.type" value="{{batch.code}}" checked> {{ batch.fullName }}
+                <input type="radio" ng-model="form.formData.batch" value="{{batch.code}}" checked> {{ batch.fullName }}
             </label>
         </div>
     </div>
@@ -20,3 +16,4 @@
         </a>
     </div>
 </div>
+

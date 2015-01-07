@@ -6,6 +6,11 @@
                 <h2> General Election's 2015 </h2>
             </div>
 
+            <!-- Breadcrumbs to indicate the current form -->
+            <div class="status-buttons text-center">
+                <a class="active"><span>{{form.stateCode}}</span>{{form.stateName}}</a>
+            </div>
+
             <!-- use ng-submit to catch the form submission and use our Angular function -->
             <form id="elections-form" ng-submit="form.processForm()">
                 <!-- our nested state views will be injected here -->
