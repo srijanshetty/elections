@@ -3,63 +3,47 @@
 ============================================================================= */
 body
 {
-    padding-top:20px;
-    color: white;
-}
-
-/* form styling */
-.form-container
-{
-    background:#2f2f2f;
-    margin-bottom:20px;
-    border-radius:5px;
-    padding-bottom: 6px;
-}
-
-.form-container .page-header
-{
-    background:#151515;
-    margin:0;
-    padding:30px;
-    border-top-left-radius:5px;
-    border-top-right-radius:5px;
+    font-size: 15px;
 }
 
 /* numbered buttons */
-.status-buttons
-{
-    padding-top: 20px;
-}
-
-.status-buttons a
-{
-    color:#FFF;
-    display:inline-block;
-    font-size:12px;
-    margin-right:10px;
-    text-align:center;
+.state-name{
     text-transform:uppercase;
 }
 
-.status-buttons a:hover
+.state-code {
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    padding: 15px;
+}
+
+.state-code a
+{
+    color:black;
+    display:inline-block;
+    text-align:center;
+    padding-right: 3px;
+}
+
+.state-code a:hover
 {
     text-decoration:none;
 }
 
 /* we will style the span as the circled number */
-.status-buttons span
+.state-code span
 {
-    background:#080808;
+    background:white;
     display:block;
     height:30px;
-    margin:0 auto 10px;
+    margin:0 auto 0;
     padding-top: 5px;
     width:30px;
     border-radius:50%;
 }
 
 /* active buttons turn light green-blue*/
-.status-buttons a.active span
+.state-code a.active span
 {
     background:#00BC8C;
 }

@@ -1,15 +1,15 @@
 <!-- form.html -->
 <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
+    <div class="col-md-12">
         <div class="form-container">
-            <div class="page-header text-center">
-                <h2> General Election's 2015 </h2>
+            <!-- Breadcrumbs to indicate the current form -->
+            <div class="state-code text-center">
+                <a ng-repeat="a in range(totalStates) track by $index" ng-class="{active: stateCode == $index + 1}">
+                    <span>{{$index + 1}}</span>
+                </a>
             </div>
 
-            <!-- Breadcrumbs to indicate the current form -->
-            <div class="status-buttons text-center">
-                <a class="active"><span>{{stateCode}}</span>{{stateName}}</a>
-            </div>
+            <div class="state-name text-center"> {{stateName}} </div>
 
             <!-- use ng-submit to catch the form submission and use our Angular function -->
             <form id="elections-form" ng-submit="processForm()">

@@ -1,15 +1,15 @@
 <div class="text-center">
     <div class="form-group">
-        <div class="radio" ng-repeat="batch in batches">
-            <label>
-                <input type="radio" ng-model="formData.batch" value="{{batch.code}}" checked> {{ batch.fullName }}
-            </label>
+        <div class="radio">
+            <div ng-repeat="batch in batches">
+                <label> <input type="radio" ng-model="formData.batch" value="{{batch.code}}" checked> {{ batch.fullName }} </label>
+            </div>
         </div>
     </div>
 </div>
 
 <div class="form-group row">
-    <div class="col-xs-6 col-xs-offset-3">
+    <div class="col-md-2 col-md-offset-5">
         <a ui-sref="form.senator" class="btn btn-block btn-info">
             Next Section
             <span class="glyphicon glyphicon-circle-arrow-right" ></span>
