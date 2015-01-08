@@ -15,7 +15,8 @@ electionsApp.config(function($urlRouterProvider, $stateProvider) {
             url: '/batch',
             templateUrl: 'partials/form-batch.html',
             stateName: '',
-            stateCode: 1
+            stateCode: 1,
+            controller: 'batchController'
         })
         .state('form.senator', {
             url: '/senator',
@@ -72,7 +73,14 @@ electionsApp.controller('formController', function ($rootScope, $state, dataFact
     vm.formData = {};
 
     // This would keep a track of visited states
-    vm.states = {};
+    vm.states = {
+        isLoggedIn: true,
+        sntVoteCast: false,
+        gamesVoteCast: false,
+        presidentVoteCast: false,
+        senatorVoteCast: false,
+        cultVoteCast: false
+    };
 
     // For the breadcrumb navigation
     vm.totalStates = 7;
@@ -97,26 +105,27 @@ electionsApp.controller('formController', function ($rootScope, $state, dataFact
     });
 });
 
-electionsApp.controller('senatorController', function senatorContoller($state, $scope, dataFactory) {
-    // Check if batch has been selected otherwise backtrack
-    if ($scope.formData.batch) {
-        // Indicate that the senator state has been set
-        $scope.states.senator = true;
-
-        // Make a list of senators available to the view
-        $scope.senatorList = dataFactory.getSenators($scope.formData.batch);
-        console.log($scope.senatorList);
-    } else {
-        $state.go('form.batch');
-    }
+electionsApp.controller('batchController', function batchController($state, $scope) {
+    // Process the submit request
+    $scope.processBatchSubmit = function () {
+        $state.go('form.senator');
+    };
 });
 
-electionsApp.controller('presidentController', function presidentContoller($state, $scope, dataFactory) {
-    // Check if vote has been cast for senator and then backtrack
-    if ($scope.states.senator) {
-        // Indicate that the president state has been set
-        $scope.states.president = true;
-    } else {
-        $state.go('form.senator');
-    }
+electionsApp.controller('senatorController', function senatorContoller($state, $scope, dataFactory) {
+    // Make a list of senators available to the view
+    $scope.senatorList = dataFactory.getSenators($scope.formData.batch);
+    console.log($scope.senatorList);
+
+    // Process the submit request
+    $scope.processSenatorSubmit = function () {
+        $state.go('form.president');
+    };
+});
+
+electionsApp.controller('presidentController', function presidentContoller($state, $scope) {
+    // Process the submit request
+    $scope.processPresidentSubmit = function () {
+        $state.go('form.thanks');
+    };
 });
