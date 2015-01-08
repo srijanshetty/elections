@@ -8,51 +8,32 @@ electionsApp.config(function($urlRouterProvider, $stateProvider) {
         .state('form', {
             url: '',
             abstract: true,
-            templateUrl: 'form.html',
+            templateUrl: 'partials/form.html',
             controller: 'formController'
         })
         .state('form.batch', {
             url: '/batch',
-            templateUrl: 'form-batch.html',
+            templateUrl: 'partials/form-batch.html',
             stateName: '',
             stateCode: 1
         })
         .state('form.senator', {
             url: '/senator',
-            templateUrl: 'form-senator.html',
+            templateUrl: 'partials/form-senator.html',
             stateName: 'senator',
             stateCode: 2,
-            controller: function senatorContoller($state, $scope, dataFactory) {
-                if ($scope.formData.batch) {
-                    // Indicate that the president state has been set
-                    $scope.states.senator = true;
-
-                    // Make a list of senators available to the view
-                    $scope.senatorList = dataFactory.getSenators($scope.formData.batch);
-                    console.log($scope.senatorList);
-                } else {
-                    $state.go('form.batch');
-                }
-            }
+            controller: 'senatorController'
         })
         .state('form.president', {
             url: '/president',
-            templateUrl: 'form-president.html',
+            templateUrl: 'partials/form-president.html',
             stateName: 'president',
             stateCode: 3,
-            controller: function presidentContoller($state, $scope, dataFactory) {
-                if ($scope.states.senator) {
-                    // Indicate that the president state has been set
-                    $scope.states.president = true;
-                } else {
-                    $state.go('form.senator');
-                }
-            }
-
+            controller: 'presidentController'
         })
         .state('form.thanks', {
             url: '/thanks',
-            templateUrl: 'form-thanks.html',
+            templateUrl: 'partials/form-thanks.html',
             stateName: 'thanks',
             stateCode: 7
         });
@@ -114,5 +95,28 @@ electionsApp.controller('formController', function ($rootScope, $state, dataFact
         vm.stateName = toState.stateName;
         vm.stateCode = toState.stateCode;
     });
+});
 
+electionsApp.controller('senatorController', function senatorContoller($state, $scope, dataFactory) {
+    // Check if batch has been selected otherwise backtrack
+    if ($scope.formData.batch) {
+        // Indicate that the senator state has been set
+        $scope.states.senator = true;
+
+        // Make a list of senators available to the view
+        $scope.senatorList = dataFactory.getSenators($scope.formData.batch);
+        console.log($scope.senatorList);
+    } else {
+        $state.go('form.batch');
+    }
+});
+
+electionsApp.controller('presidentController', function presidentContoller($state, $scope, dataFactory) {
+    // Check if vote has been cast for senator and then backtrack
+    if ($scope.states.senator) {
+        // Indicate that the president state has been set
+        $scope.states.president = true;
+    } else {
+        $state.go('form.senator');
+    }
 });
