@@ -7,9 +7,9 @@ electionsApp.config(function($urlRouterProvider, $stateProvider) {
     $stateProvider
         .state('form', {
             url: '/form',
+            abstract: true,
             templateUrl: 'form.html',
-            controller: 'formController',
-            controllerAs: 'form'
+            controller: 'formController'
         })
         .state('form.batch', {
             url: '/batch',
@@ -21,13 +21,33 @@ electionsApp.config(function($urlRouterProvider, $stateProvider) {
             url: '/senator',
             templateUrl: 'form-senator.html',
             stateName: 'senator',
-            stateCode: 3
+            stateCode: 3,
+            controller: function senatorContoller($state, $scope, dataFactory) {
+                if ($scope.formData.batch) {
+                    // Indicate that the president state has been set
+                    $scope.states.senator = true;
+
+                    var senatorList = dataFactory.senators[$scope.formData.batch];
+                    console.log(senatorList[0].name);
+                } else {
+                    $state.go('form.batch');
+                }
+            }
         })
         .state('form.president', {
             url: '/president',
             templateUrl: 'form-president.html',
             stateName: 'president',
-            stateCode: 4
+            stateCode: 4,
+            controller: function presidentContoller($state, $scope, dataFactory) {
+                if ($scope.states.senator) {
+                    // Indicate that the president state has been set
+                    $scope.states.president = true;
+                } else {
+                    $state.go('form.senator');
+                }
+            }
+
         })
         .state('form.thanks', {
             url: '/thanks',
@@ -47,12 +67,26 @@ electionsApp.factory('dataFactory', function() {
         { code: 'y13', fullName: 'UG, Y13'}
     ];
 
+    exports.senators = {
+        'y11': [
+            {
+                'name': 'Srijan R. Shetty',
+                'rollNo': '11727'
+            }
+        ]
+    };
+
     return exports;
 });
 
-electionsApp.controller('formController', function ($rootScope, $state, dataFactory) {
-    var vm = this;
+electionsApp.controller('formController', function ($rootScope, $state, dataFactory, $scope) {
+    var vm = $scope;
+
+    // To store formData
     vm.formData = {};
+
+    // This would keep a track of visited states
+    vm.states = {};
 
     // Obtain the list of batches from the dataFactory
     vm.batches = dataFactory.batches;

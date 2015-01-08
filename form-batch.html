@@ -1,8 +1,8 @@
 <div class="text-center">
     <div class="form-group">
-        <div class="radio" ng-repeat="batch in form.batches">
+        <div class="radio" ng-repeat="batch in batches">
             <label>
-                <input type="radio" ng-model="form.formData.batch" value="{{batch.code}}" checked> {{ batch.fullName }}
+                <input type="radio" ng-model="formData.batch" value="{{batch.code}}" checked> {{ batch.fullName }}
             </label>
         </div>
     </div>
