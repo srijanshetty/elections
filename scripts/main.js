@@ -1,10 +1,14 @@
 // Function to check login
 function checkLogin($state, localStorageService) {
     var isLoggedIn = localStorageService.get('isLoggedIn');
+    var nextState = localStorageService.get('nextState');
+    console.log(nextState);
 
-    if (!isLoggedIn) {
+    if (!isLoggedIn && nextState !== $state.current.stateName) {
         // $state.go('login');
         console.log('Not logged in');
+    } else {
+        console.log('logged in');
     }
 }
 
@@ -29,7 +33,7 @@ electionsApp.config(function($urlRouterProvider, $stateProvider) {
     .state('form.batch', {
         url: '/batch',
         templateUrl: 'partials/form-batch.html',
-        stateName: '',
+        stateName: 'Info',
         stateCode: 1,
         controller: 'batchController',
         onEnter: checkLogin
@@ -56,10 +60,7 @@ electionsApp.config(function($urlRouterProvider, $stateProvider) {
         stateName: 'thanks',
         stateCode: 7,
         controller: 'thanksController',
-        onEnter: checkLogin,
-        onExit: function (localStorageService) {
-            localStorageService.remove('isLoggedIn');
-        }
+        onEnter: checkLogin
     });
 });
 
@@ -87,7 +88,11 @@ electionsApp.factory('dataFactory', function() {
 electionsApp.controller('loginController', function($state, $scope, localStorageService) {
     $scope.processLoginSubmit = function() {
         if ($scope.password && $scope.password === 'srijan') {
-            localStorageService.set('isLoggedIn', 1);
+            // Setup state variables
+            localStorageService.set('isLoggedIn', true);
+            localStorageService.set('nextState', 'batch');
+
+            // Redirect to next state
             $state.go('form.batch');
         } else {
             window.alert('Wrong Password');
@@ -120,33 +125,50 @@ electionsApp.controller('formController', function ($rootScope, $state, dataFact
     });
 });
 
-electionsApp.controller('batchController', function batchController($state, $scope) {
+electionsApp.controller('batchController', function batchController($state, $scope, localStorageService) {
     // Process the submit request
     $scope.processBatchSubmit = function () {
+        // Set the next state
+        localStorageService.set('nextState', 'senator');
+
+        // Redirect to senator
         $state.go('form.senator');
     };
 });
 
-electionsApp.controller('senatorController', function senatorContoller($state, $scope, dataFactory) {
+electionsApp.controller('senatorController', function senatorContoller($state, $scope, dataFactory, localStorageService) {
     // Make a list of senators available to the view
     $scope.senatorList = dataFactory.getSenators($scope.formData.batch);
 
     // Process the submit request
     $scope.processSenatorSubmit = function () {
+        // Set the next state
+        localStorageService.set('nextState', 'president');
+
+        // Redirect to president
         $state.go('form.president');
     };
 });
 
-electionsApp.controller('presidentController', function presidentContoller($state, $scope) {
+electionsApp.controller('presidentController', function presidentContoller($state, $scope, localStorageService) {
     // Process the submit request
     $scope.processPresidentSubmit = function () {
+        // Set the next state
+        localStorageService.set('nextState', 'thanks');
+
+        // Redirect to thanks
         $state.go('form.thanks');
     };
 });
 
-electionsApp.controller('thanksController', function thanksController($state, $scope) {
+electionsApp.controller('thanksController', function thanksController($state, $scope, localStorageService) {
     // Process the submit request
     $scope.processThanksSubmit = function () {
+        // Clean up
+        localStorageService.remove('isLoggedIn');
+        localStorageService.remove('nextState');
+
+        // Redirect to login page
         $state.go('login');
     };
 });

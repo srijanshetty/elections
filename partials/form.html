@@ -1,18 +1,23 @@
 <!-- form.html -->
+<!-- The name of the state -->
+<div class="row state-name text-center">
+    <h3>{{stateName}}</h3>
+</div>
+
+<!-- MAIN VIEW with different forms -->
 <div class="row">
     <div class="col-md-12">
         <div class="form-container">
-            <!-- Breadcrumbs to indicate the current form -->
-            <div class="state-code text-center">
-                <a ng-repeat="a in range(totalStates) track by $index" ng-class="{active: stateCode == $index + 1}">
-                    <span>{{$index + 1}}</span>
-                </a>
-            </div>
-
-            <div class="state-name text-center"> {{stateName}} </div>
-
             <!-- our nested state views will be injected here -->
             <div id="form-views" ui-view></div>
         </div>
     </div>
 </div>
+
+<!-- Footer which shows the step number -->
+<div class="footer navbar-fixed-bottom state-code text-center">
+    <a ng-repeat="a in range(totalStates) track by $index" ng-class="{active: stateCode == $index + 1}">
+        <span>{{$index + 1}}</span>
+    </a>
+</div>
+
