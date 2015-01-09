@@ -47,3 +47,14 @@ body
 {
     background:#00BC8C;
 }
+
+.login-banner {
+    padding-top: 40px;
+}
+
+.login-form {
+    border: 1px solid lightgray;
+    margin-top: 40px;
+    padding: 30px 0;
+    border-radius: 5px;
+}

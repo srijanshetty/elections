@@ -1,43 +1,66 @@
-var electionsApp = angular.module('electionsApp', ['ui.router']);
+// Function to check login
+function checkLogin($state, localStorageService) {
+    var isLoggedIn = localStorageService.get('isLoggedIn');
+
+    if (!isLoggedIn) {
+        // $state.go('login');
+        console.log('Not logged in');
+    }
+}
+
+var electionsApp = angular.module('electionsApp', ['ui.router', 'LocalStorageModule']);
 
 // Setup the router
 electionsApp.config(function($urlRouterProvider, $stateProvider) {
-    $urlRouterProvider.otherwise('/batch');
+    $urlRouterProvider.otherwise('/login');
 
     $stateProvider
-        .state('form', {
-            url: '',
-            abstract: true,
-            templateUrl: 'partials/form.html',
-            controller: 'formController'
-        })
-        .state('form.batch', {
-            url: '/batch',
-            templateUrl: 'partials/form-batch.html',
-            stateName: '',
-            stateCode: 1,
-            controller: 'batchController'
-        })
-        .state('form.senator', {
-            url: '/senator',
-            templateUrl: 'partials/form-senator.html',
-            stateName: 'senator',
-            stateCode: 2,
-            controller: 'senatorController'
-        })
-        .state('form.president', {
-            url: '/president',
-            templateUrl: 'partials/form-president.html',
-            stateName: 'president',
-            stateCode: 3,
-            controller: 'presidentController'
-        })
-        .state('form.thanks', {
-            url: '/thanks',
-            templateUrl: 'partials/form-thanks.html',
-            stateName: 'thanks',
-            stateCode: 7
-        });
+    .state('login', {
+        url: '/login',
+        templateUrl: 'partials/login.html',
+        controller: 'loginController'
+    })
+    .state('form', {
+        url: '',
+        abstract: true,
+        templateUrl: 'partials/form.html',
+        controller: 'formController'
+    })
+    .state('form.batch', {
+        url: '/batch',
+        templateUrl: 'partials/form-batch.html',
+        stateName: '',
+        stateCode: 1,
+        controller: 'batchController',
+        onEnter: checkLogin
+    })
+    .state('form.senator', {
+        url: '/senator',
+        templateUrl: 'partials/form-senator.html',
+        stateName: 'senator',
+        stateCode: 2,
+        controller: 'senatorController',
+        onEnter: checkLogin
+    })
+    .state('form.president', {
+        url: '/president',
+        templateUrl: 'partials/form-president.html',
+        stateName: 'president',
+        stateCode: 3,
+        controller: 'presidentController',
+        onEnter: checkLogin
+    })
+    .state('form.thanks', {
+        url: '/thanks',
+        templateUrl: 'partials/form-thanks.html',
+        stateName: 'thanks',
+        stateCode: 7,
+        controller: 'thanksController',
+        onEnter: checkLogin,
+        onExit: function (localStorageService) {
+            localStorageService.remove('isLoggedIn');
+        }
+    });
 });
 
 electionsApp.factory('dataFactory', function() {
@@ -52,12 +75,7 @@ electionsApp.factory('dataFactory', function() {
 
     exports.getSenators = function (batch) {
         var senators = {
-            'y11': [
-                {
-                    'name': 'Srijan R. Shetty',
-                    'rollNo': '11727'
-                }
-            ]
+            'y11': [ { 'name': 'Srijan R. Shetty', 'rollNo': '11727' } ]
         };
 
         return senators[batch];
@@ -66,21 +84,23 @@ electionsApp.factory('dataFactory', function() {
     return exports;
 });
 
+electionsApp.controller('loginController', function($state, $scope, localStorageService) {
+    $scope.processLoginSubmit = function() {
+        if ($scope.password && $scope.password === 'srijan') {
+            localStorageService.set('isLoggedIn', 1);
+            $state.go('form.batch');
+        } else {
+            window.alert('Wrong Password');
+            $scope.password = '';
+        }
+    };
+});
+
 electionsApp.controller('formController', function ($rootScope, $state, dataFactory, $scope) {
     var vm = $scope;
 
     // To store formData
     vm.formData = {};
-
-    // This would keep a track of visited states
-    vm.states = {
-        isLoggedIn: true,
-        sntVoteCast: false,
-        gamesVoteCast: false,
-        presidentVoteCast: false,
-        senatorVoteCast: false,
-        cultVoteCast: false
-    };
 
     // For the breadcrumb navigation
     vm.totalStates = 7;
@@ -90,11 +110,6 @@ electionsApp.controller('formController', function ($rootScope, $state, dataFact
 
     // Obtain the list of batches from the dataFactory
     vm.batches = dataFactory.batches;
-
-    // Complete the processing of the form
-    vm.processForm = function() {
-        window.alert('awesome');
-    };
 
     // Make sure the correct stateName and stateCode are displayed everytime
     vm.stateName = $state.current.stateName;
@@ -115,7 +130,6 @@ electionsApp.controller('batchController', function batchController($state, $sco
 electionsApp.controller('senatorController', function senatorContoller($state, $scope, dataFactory) {
     // Make a list of senators available to the view
     $scope.senatorList = dataFactory.getSenators($scope.formData.batch);
-    console.log($scope.senatorList);
 
     // Process the submit request
     $scope.processSenatorSubmit = function () {
@@ -127,5 +141,12 @@ electionsApp.controller('presidentController', function presidentContoller($stat
     // Process the submit request
     $scope.processPresidentSubmit = function () {
         $state.go('form.thanks');
+    };
+});
+
+electionsApp.controller('thanksController', function thanksController($state, $scope) {
+    // Process the submit request
+    $scope.processThanksSubmit = function () {
+        $state.go('login');
     };
 });
