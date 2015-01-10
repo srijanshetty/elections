@@ -13,11 +13,11 @@
   ],
   "window": {
       "toolbar": false,
-      "width": 800,
-      "height": 500,
-      "min_width": 400,
-      "min_height": 200,
-      "max_width": 800,
+      "width": 1024,
+      "height": 600,
+      "min_width": 1024,
+      "min_height": 600,
+      "max_width": 1024,
       "max_height": 600,
       "position": "mouse"
   },

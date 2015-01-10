@@ -1,3 +1,10 @@
+TODO
+----
+
+- Validation
+- Location of Candidates
+- Persistence
+
 LICENSE
 -------
 
