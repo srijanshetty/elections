@@ -1,5 +1,5 @@
 angular.module('electionsApp')
-    .controller('formController', function ($rootScope, $state, dataFactory, $scope) {
+    .controller('formController', function ($rootScope, $state, dataFactory, $scope, $modal, localStorageService) {
         var vm = $scope;
 
         // To store formData
@@ -21,4 +21,40 @@ angular.module('electionsApp')
             vm.stateName = toState.stateName;
             vm.stateCode = toState.stateCode;
         });
+
+        // For the cancelVote Modal
+        vm.open = function () {
+            var modalInstance = $modal.open({
+                templateUrl: 'partials/closeModal.html',
+                controller: 'closeModalController'
+            });
+
+            modalInstance.result.then(function (status) {
+                if (status === true) {
+                    // Clean Up state before loggin out
+                    localStorageService.clearAll();
+                    $state.go('login');
+                }
+            });
+        };
+    });
+
+angular.module('electionsApp')
+    .controller('closeModalController', function ($scope, $modalInstance, dataFactory) {
+        var vm = $scope;
+
+        // To store the contents
+        vm.selected = {};
+
+        vm.ok = function () {
+            if (vm.selected.cancelPassword === dataFactory.settings.cancelPassword) {
+                $modalInstance.close(true);
+            } else {
+                $modalInstance.close(false);
+            }
+        };
+
+        vm.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
     });
