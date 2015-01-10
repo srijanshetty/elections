@@ -14,6 +14,11 @@
     </div>
 </div>
 
+<!-- The close Modal -->
+<div>
+    <button class="btn btn-default" ng-click="open()">Open me!</button>
+</div>
+
 <!-- Footer which shows the step number -->
 <div class="footer navbar-fixed-bottom state-code text-center">
     <a ng-repeat="a in range(totalStates) track by $index" ng-class="{active: stateCode == $index + 1}">

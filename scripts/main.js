@@ -12,7 +12,7 @@ function checkLogin($state, localStorageService) {
     }
 }
 
-var electionsApp = angular.module('electionsApp', ['ui.router', 'LocalStorageModule']);
+var electionsApp = angular.module('electionsApp', ['ui.router', 'LocalStorageModule', 'ui.bootstrap']);
 
 // Setup the router
 electionsApp.config(function($urlRouterProvider, $stateProvider) {
@@ -82,93 +82,10 @@ electionsApp.factory('dataFactory', function() {
         return senators[batch];
     };
 
+    exports.settings = {
+        mainPassword: 'srijan',
+        cancelPassword: 'cancel'
+    };
+
     return exports;
-});
-
-electionsApp.controller('loginController', function($state, $scope, localStorageService) {
-    $scope.processLoginSubmit = function() {
-        if ($scope.password && $scope.password === 'srijan') {
-            // Setup state variables
-            localStorageService.set('isLoggedIn', true);
-            localStorageService.set('nextState', 'batch');
-
-            // Redirect to next state
-            $state.go('form.batch');
-        } else {
-            window.alert('Wrong Password');
-            $scope.password = '';
-        }
-    };
-});
-
-electionsApp.controller('formController', function ($rootScope, $state, dataFactory, $scope) {
-    var vm = $scope;
-
-    // To store formData
-    vm.formData = {};
-
-    // For the breadcrumb navigation
-    vm.totalStates = 7;
-    vm.range = function(n) {
-        return new Array(n);
-    };
-
-    // Obtain the list of batches from the dataFactory
-    vm.batches = dataFactory.batches;
-
-    // Make sure the correct stateName and stateCode are displayed everytime
-    vm.stateName = $state.current.stateName;
-    vm.stateCode = $state.current.stateCode;
-    $rootScope.$on('$stateChangeSuccess', function(events, toState) {
-        vm.stateName = toState.stateName;
-        vm.stateCode = toState.stateCode;
-    });
-});
-
-electionsApp.controller('batchController', function batchController($state, $scope, localStorageService) {
-    // Process the submit request
-    $scope.processBatchSubmit = function () {
-        // Set the next state
-        localStorageService.set('nextState', 'senator');
-
-        // Redirect to senator
-        $state.go('form.senator');
-    };
-});
-
-electionsApp.controller('senatorController', function senatorContoller($state, $scope, dataFactory, localStorageService) {
-    // Make a list of senators available to the view
-    $scope.senatorList = dataFactory.getSenators($scope.formData.batch);
-
-    // Process the submit request
-    $scope.processSenatorSubmit = function () {
-        // Set the next state
-        localStorageService.set('nextState', 'president');
-
-        // Redirect to president
-        $state.go('form.president');
-    };
-});
-
-electionsApp.controller('presidentController', function presidentContoller($state, $scope, localStorageService) {
-    // Process the submit request
-    $scope.processPresidentSubmit = function () {
-        // Set the next state
-        localStorageService.set('nextState', 'thanks');
-
-        // Redirect to thanks
-        $state.go('form.thanks');
-    };
-});
-
-electionsApp.controller('thanksController', function thanksController($state, $scope, localStorageService) {
-    // Process the submit request
-    $scope.processThanksSubmit = function () {
-        // Clean up
-        localStorageService.remove('isLoggedIn');
-        localStorageService.remove('nextState');
-
-        // Redirect to login page
-        $state.go('login');
-    };
 });
