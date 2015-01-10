@@ -1,28 +1,37 @@
 <!-- form.html -->
-<!-- The name of the state -->
-<div class="row state-name text-center">
-    <h3>{{stateName}}</h3>
-</div>
+<!-- Static navbar -->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Election Council</a>
+        </div>
 
-<!-- MAIN VIEW with different forms -->
-<div class="row">
-    <div class="col-md-12">
-        <div class="form-container">
-            <!-- our nested state views will be injected here -->
-            <div id="form-views" ui-view></div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a ng-click="open()" class="close">X</a></li>
+        </ul>
+    </div><!--/.container-fluid -->
+</nav>
+
+<div class="container">
+    <!-- The name of the state -->
+    <div class="row state-name text-center">
+        <h3>{{stateName}}</h3>
+    </div>
+
+    <!-- MAIN VIEW with different forms -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-container">
+                <!-- our nested state views will be injected here -->
+                <div id="form-views" ui-view></div>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- The close Modal -->
-<div>
-    <button class="btn btn-default" ng-click="open()">Open me!</button>
+    <!-- Footer which shows the step number -->
+    <div class="footer navbar-fixed-bottom state-code text-center">
+        <a ng-repeat="a in range(totalStates) track by $index" ng-class="{active: stateCode == $index + 1}">
+            <span>{{$index + 1}}</span>
+        </a>
+    </div>
 </div>
-
-<!-- Footer which shows the step number -->
-<div class="footer navbar-fixed-bottom state-code text-center">
-    <a ng-repeat="a in range(totalStates) track by $index" ng-class="{active: stateCode == $index + 1}">
-        <span>{{$index + 1}}</span>
-    </a>
-</div>
-

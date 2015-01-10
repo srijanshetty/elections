@@ -6,6 +6,8 @@ body
     font-size: 15px;
 }
 
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
 /* numbered buttons */
 .state-name{
     text-transform:uppercase;
@@ -53,11 +55,16 @@ body
 
 .login-banner {
     padding-top: 40px;
+    margin-top: 50px;
 }
 
 .login-form {
     border: 1px solid lightgray;
     margin-top: 40px;
-    padding: 30px 0;
+    padding: 30px 5px;
     border-radius: 5px;
+}
+
+.close {
+    font-size: 17px;
 }

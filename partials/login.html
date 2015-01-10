@@ -1,22 +1,24 @@
-<div class="row">
-    <div class="login-banner col-md-12 text-center">
-        <img src="assets/logo.png">
+<div class="container">
+    <div class="row">
+        <div class="login-banner col-md-12 text-center">
+            <img src="assets/logo.png">
+        </div>
     </div>
+
+    <form class="login-form col-md-8 col-md-offset-2" ng-submit="processLoginSubmit()">
+        <div class="form-group row">
+            <div class="col-md-2 col-md-offset-3">
+                <label for="password">Password</label>
+            </div>
+            <div class="col-md-4">
+                <input type="password" class="form-control" ng-model="password">
+            </div>
+        </div>
+
+        <div class="form-group row text-center">
+            <button class="btn btn-info" type="submit">
+                Login
+                <span class="glyphicon glyphicon-circle-arrow-right" ></span>
+            </button>
+    </form>
 </div>
-
-<form class="login-form col-md-8 col-md-offset-2" ng-submit="processLoginSubmit()">
-    <div class="form-group row">
-        <div class="col-md-2 col-md-offset-3">
-            <label for="password">Password</label>
-        </div>
-        <div class="col-md-4">
-            <input type="password" class="form-control" ng-model="password">
-        </div>
-    </div>
-
-    <div class="form-group row text-center">
-        <button class="btn btn-info" type="submit">
-            Login
-            <span class="glyphicon glyphicon-circle-arrow-right" ></span>
-        </button>
-</form>
