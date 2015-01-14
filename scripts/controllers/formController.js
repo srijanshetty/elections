@@ -3,7 +3,12 @@ angular.module('electionsApp')
         var vm = $scope;
 
         // To store formData
-        vm.formData = {};
+        vm.formData = {
+            'batch': '',
+            'senatorFirst': '',
+            'senatorSecond': '',
+            'senatorThird': ''
+        };
 
         // For the breadcrumb navigation
         vm.totalStates = 7;

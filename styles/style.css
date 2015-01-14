@@ -13,7 +13,7 @@ body
     text-transform:uppercase;
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .state-code {
@@ -67,4 +67,20 @@ body
 
 .close {
     font-size: 17px;
+}
+
+.footer {
+    background: white;
+}
+
+.candidates-container {
+    margin-bottom: 120px;
+}
+
+.candidate-cell {
+    padding: 10px 0;
+}
+
+.submit-selection {
+    margin-top: 30px;
 }
