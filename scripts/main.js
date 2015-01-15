@@ -90,6 +90,14 @@ electionsApp.factory('dataFactory', function() {
         return senators[batch];
     };
 
+    exports.getPresidents = function () {
+        var presidents = [
+            { 'id': 100, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' },
+            { 'id': 101, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' }];
+
+        return presidents;
+    };
+
     exports.settings = {
         mainPassword: 'srijan',
         cancelPassword: 'cancel'
