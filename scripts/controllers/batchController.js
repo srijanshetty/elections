@@ -4,8 +4,10 @@ angular.module('electionsApp')
         $scope.processBatchSubmit = function () {
             // Check the validation of the form
             if ($scope.formData.batch === '') {
-                // TODO: Add a modal over here
-                $modal.open({ templateUrl: '../../partials/errorModal.html'});
+                $modal.open({
+                    templateUrl: '../../partials/errorModal.html',
+                    controller: 'batchErrorController'
+                });
             } else {
                 // Set the next state
                 localStorageService.set('nextState', 'senator');
@@ -14,4 +16,10 @@ angular.module('electionsApp')
                 $state.go('form.senator');
             }
         };
+    })
+    .controller('batchErrorController', function batchErrorController($scope) {
+        $scope.error = {};
+        $scope.error.name = 'Input Error';
+        $scope.error.msg = 'Please provide a valid batch';
     });
+

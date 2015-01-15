@@ -1,5 +1,5 @@
 angular.module('electionsApp')
-    .controller('loginController', function($state, $scope, localStorageService, dataFactory) {
+    .controller('loginController', function($state, $scope, localStorageService, dataFactory, $modal) {
         $scope.processLoginSubmit = function() {
             if ($scope.password && $scope.password === dataFactory.settings.mainPassword) {
                 // Setup state variables
@@ -9,9 +9,19 @@ angular.module('electionsApp')
                 // Redirect to next state
                 $state.go('form.batch');
             } else {
-                window.alert('Wrong Password');
+                $modal.open({
+                    templateUrl: '../../partials/errorModal.html',
+                    controller: 'loginErrorController'
+                });
+
                 $scope.password = '';
             }
         };
+    })
+    .controller('loginErrorController', function loginErrorController($scope) {
+        $scope.error = {};
+        $scope.error.name = 'Login Error';
+        $scope.error.msg = 'Invalid Password';
     });
+
 
