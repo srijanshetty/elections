@@ -7,7 +7,31 @@ angular.module('electionsApp')
             'batch': '',
             'senatorFirst': '',
             'senatorSecond': '',
-            'senatorThird': ''
+            'senatorThird': '',
+            'presidentFirst': '',
+            'presidentSecond': '',
+            'presidentThird': '',
+            'presidentNoPreference': false,
+            'culturalFirst': '',
+            'culturalSecond': '',
+            'culturalThird': '',
+            'cultNoPreference': false,
+            'sportsFirst': '',
+            'sportsSecond': '',
+            'sportsThird': '',
+            'sportsNoPreference': false,
+            'gamesFirst': '',
+            'gamesSecond': '',
+            'gamesThird': '',
+            'gamesNoPreference': false,
+            'scienceFirst': '',
+            'scienceSecond': '',
+            'scienceThird': '',
+            'scienceNoPreference': false,
+            'filmsFirst': '',
+            'filmsSecond': '',
+            'filmsThird': '',
+            'filmsNoPreference':false
         };
 
         // For the breadcrumb navigation
