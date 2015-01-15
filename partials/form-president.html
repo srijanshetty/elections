@@ -1,7 +1,35 @@
 <form ng-submit="processPresidentSubmit()">
+    <div class="row">
+        <div class="col-sm-6 candidate-cell text-center" ng-repeat="candidate in presidentList">
+            <img src="{{candidate.image}}">
+            <p>{{candidate.name}}</p>
+            <div class="col-sm-offset-4 text-left">
+                <p>
+                    <input type="radio" name="candidate-first" ng-model="formData.senatorFirst" value="{{candidate.id}}">
+                    First Preference
+                </p>
+                <p>
+                    <input type="radio" name="candidate-second" ng-model="formData.senatorSecond" value="{{candidate.id}}">
+                    Second Preference
+                </p>
+                <p>
+                    <input type="radio" name="candidate-third" ng-model="formData.senatorThird" value="{{candidate.id}}">
+                    Third Preference
+                </p>
+            </div>
+        </div>
+    </div>
+
     <div class="form-group text-center">
         <button class="btn btn-info" type="submit">
             Cast Vote
+            <span class="glyphicon glyphicon-circle-arrow-right" ></span>
+        </button>
+    </div>
+
+    <div class="form-group text-center">
+        <button class="btn btn-danger" type="button" ng-click="processNoPreference()">
+            No Preference
             <span class="glyphicon glyphicon-circle-arrow-right" ></span>
         </button>
     </div>
