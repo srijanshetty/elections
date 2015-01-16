@@ -68,6 +68,14 @@ electionsApp.config(function($urlRouterProvider, $stateProvider) {
         controller: 'gamesController',
         onEnter: checkLogin
     })
+    .state('form.cultural', {
+        url: '/cultural',
+        templateUrl: 'partials/form-cultural.html',
+        stateName: 'cultural',
+        stateCode: 4,
+        controller: 'culturalController',
+        onEnter: checkLogin
+    })
     .state('form.submit', {
         url: '/submit',
         templateUrl: 'partials/form-submit.html',
@@ -124,6 +132,13 @@ electionsApp.factory('dataFactory', function($http) {
         return candidates;
     };
 
+    // Get the names of candidates for cultural form the DB
+    exports.getCultural = function () {
+        var candidates = [
+            { 'id': 201, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' }];
+
+        return candidates;
+    };
 
     // Settings for the application
     exports.settings = {};
