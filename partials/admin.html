@@ -1,0 +1,31 @@
+<!-- form.html -->
+<!-- Static navbar -->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Election Council</a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a ng-click="close()" class="close">X</a></li>
+        </ul>
+    </div><!--/.container-fluid -->
+</nav>
+
+<div class="candidates-container container">
+    <!-- The name of the state -->
+    <div class="row state-name text-center">
+        <h3>Admin Dashboard</h3>
+    </div>
+
+    <div class="form-group text-center">
+        <button class="btn btn-danger" type="button" ng-click="clearVoteCount()">
+            Clear Vote Count
+            <span class="glyphicon glyphicon-circle-arrow-right" ></span>
+        </button>
+    </div>
+
+    <!-- Footer which shows the step number -->
+    <div class="footer navbar-fixed-bottom login-footer text-center">
+    </div>
+</div>

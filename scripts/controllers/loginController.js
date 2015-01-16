@@ -6,13 +6,15 @@ angular.module('electionsApp')
         // Process Submit
         $scope.processLoginSubmit = function() {
             if ($scope.password && $scope.password === dataFactory.settings.mainPassword) {
-
                 // Setup state variables
                 localStorageService.set('isLoggedIn', true);
                 localStorageService.set('nextState', 'batch');
 
                 // Redirect to next state
                 $state.go('form.batch');
+            } else if($scope.password && $scope.password === dataFactory.settings.adminPassword){
+                // Go to the admin console
+                $state.go('admin');
             } else {
                 $modal.open({
                     templateUrl: 'partials/errorModal.html',
