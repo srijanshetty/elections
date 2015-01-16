@@ -21,6 +21,11 @@ electionsApp.config(function($urlRouterProvider, $stateProvider) {
         templateUrl: 'partials/login.html',
         controller: 'loginController'
     })
+    .state('admin', {
+        url: '/admin',
+        templateUrl: 'partials/admin.html',
+        controller: 'adminController'
+    })
     .state('form', {
         url: '',
         abstract: true,
@@ -117,10 +122,15 @@ electionsApp.factory('dataFactory', function() {
 
 
     // Settings for the application
-    exports.settings = {
-        mainPassword: 'srijan',
-        cancelPassword: 'cancel'
-    };
+    exports.settings = (function getSettings() {
+        var settings = {
+            mainPassword: 'srijan',
+            cancelPassword: 'cancel',
+            adminPassword: 'admin'
+        };
+
+        return settings;
+    })();
 
     return exports;
 });
