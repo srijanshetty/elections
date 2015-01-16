@@ -29,5 +29,22 @@
     <body ng-app="electionsApp">
         <!-- MAIN CONTENT -->
         <div ui-view></div>
+
+        <!-- MODALS -->
+        <script type="text/ng-template" id="partials/errorModal.html">
+            <div class="modal-header">
+                <h3 class="modal-title">{{error.name}}</h3>
+            </div>
+
+            <div class="container modal-body">
+                <div class="row">
+                    {{error.msg}}
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-warning" ng-click="dismiss()">{{error.button || 'RETRY'}}</button>
+            </div>
+        </script>
     </body>
 </html>
