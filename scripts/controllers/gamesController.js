@@ -6,9 +6,9 @@ angular.module('electionsApp')
         // Skip this step if there are no items in the list
         if ( !$scope.gamesList || $scope.gamesList.length === 0) {
             // Set the next state
-            localStorageService.set('nextState', 'thanks');
+            localStorageService.set('nextState', 'submit');
 
-            $state.go('form.thanks');
+            $state.go('form.submit');
         }
 
         // Process no preference
@@ -16,10 +16,10 @@ angular.module('electionsApp')
             $scope.formData.gamesNoPreference = true;
 
             // Set the next state
-            localStorageService.set('nextState', 'thanks');
+            localStorageService.set('nextState', 'submit');
 
-            // Redirect to thanks
-            $state.go('form.thanks');
+            // Redirect to submit
+            $state.go('form.submit');
         };
 
         // Process the submit request
@@ -64,9 +64,9 @@ angular.module('electionsApp')
             }
 
             // Set the next state
-            localStorageService.set('nextState', 'thanks');
+            localStorageService.set('nextState', 'submit');
 
             // Redirect to president
-            $state.go('form.thanks');
+            $state.go('form.submit');
         };
     });

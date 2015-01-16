@@ -64,12 +64,12 @@ electionsApp.config(function($urlRouterProvider, $stateProvider) {
         controller: 'gamesController',
         onEnter: checkLogin
     })
-    .state('form.thanks', {
-        url: '/thanks',
-        templateUrl: 'partials/form-thanks.html',
-        stateName: 'thanks',
+    .state('form.submit', {
+        url: '/submit',
+        templateUrl: 'partials/form-submit.html',
+        stateName: 'submit',
         stateCode: 7,
-        controller: 'thanksController',
+        controller: 'submitController',
         onEnter: checkLogin
     });
 });

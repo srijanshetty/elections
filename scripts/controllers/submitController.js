@@ -1,7 +1,7 @@
 angular.module('electionsApp')
-    .controller('thanksController', function thanksController($state, $scope, localStorageService) {
+    .controller('submitController', function submitController($state, $scope, localStorageService) {
         // Process the submit request
-        $scope.processThanksSubmit = function () {
+        $scope.processSubmitSubmit = function () {
             // Clean up
             localStorageService.clearAll();
 
