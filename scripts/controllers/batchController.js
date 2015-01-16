@@ -17,9 +17,14 @@ angular.module('electionsApp')
             }
         };
     })
-    .controller('batchErrorController', function batchErrorController($scope) {
+    .controller('batchErrorController', function batchErrorController($modalInstance, $scope) {
         $scope.error = {};
         $scope.error.name = 'Input Error';
         $scope.error.msg = 'Please provide a valid batch';
+
+        // Dismiss the modal
+        $scope.dismiss = function () {
+            $modalInstance.dismiss('cancel');
+        };
     });
 

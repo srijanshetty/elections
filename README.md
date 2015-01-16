@@ -1,9 +1,9 @@
 TODO
 ----
 
-- Validation
 - Location of Candidates
 - Persistence
+- [x] Change alerts to modals
 
 LICENSE
 -------

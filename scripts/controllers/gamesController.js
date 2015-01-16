@@ -1,48 +1,48 @@
 angular.module('electionsApp')
-    .controller('presidentController', function presidentContoller($state, $scope, localStorageService, dataFactory, $modal) {
+    .controller('gamesController', function gamesController($state, $scope, localStorageService, dataFactory, $modal) {
         // Make a list of senators available to the view
-        $scope.presidentList = dataFactory.getPresidents();
+        $scope.gamesList = dataFactory.getGames();
 
         // Skip this step if there are no items in the list
-        if ( !$scope.presidentList || $scope.presidentList.length === 0) {
+        if ( !$scope.gamesList || $scope.gamesList.length === 0) {
             // Set the next state
-            localStorageService.set('nextState', 'games');
+            localStorageService.set('nextState', 'thanks');
 
-            $state.go('form.games');
+            $state.go('form.thanks');
         }
 
         // Process no preference
         $scope.processNoPreference = function () {
-            $scope.formData.presidentNoPreference = true;
+            $scope.formData.gamesNoPreference = true;
 
             // Set the next state
-            localStorageService.set('nextState', 'games');
+            localStorageService.set('nextState', 'thanks');
 
-            // Redirect to games
-            $state.go('form.games');
+            // Redirect to thanks
+            $state.go('form.thanks');
         };
 
         // Process the submit request
-        $scope.processPresidentSubmit = function () {
+        $scope.processGamesSubmit = function () {
             // Make sure the correct number of choices have been entered
-            if ($scope.presidentList.length >= 3) {
-                if (!$scope.formData.presidentFirst || !$scope.formData.presidentSecond || !$scope.formData.presidentThird) {
+            if ($scope.gamesList.length >= 3) {
+                if (!$scope.formData.gamesFirst || !$scope.formData.gamesSecond || !$scope.formData.gamesThird) {
                     $modal.open({
                         templateUrl: '../../partials/errorModal.html',
                         controller: 'threePreferencesErrorController'
                     });
                     return;
                 }
-            } else if ($scope.presidentList.length === 2) {
-                if (!$scope.formData.presidentFirst || !$scope.formData.presidentSecond) {
+            } else if ($scope.gamesList.length === 2) {
+                if (!$scope.formData.gamesFist || !$scope.formData.gamesSecond) {
                     $modal.open({
                         templateUrl: '../../partials/errorModal.html',
                         controller: 'twoPreferencesErrorController'
                     });
                     return;
                 }
-            } else if ($scope.presidentList.length === 1) {
-                if (!$scope.formData.presidentFirst) {
+            } else if ($scope.gamesList.length === 1) {
+                if (!$scope.formData.gamesFirst) {
                     $modal.open({
                         templateUrl: '../../partials/errorModal.html',
                         controller: 'onePreferenceErrorController'
@@ -52,10 +52,10 @@ angular.module('electionsApp')
             }
 
             // The choice of candidates must be distinct
-            if (($scope.presidentList.length > 1) &&
-                (($scope.formData.presidentFirst === $scope.formData.presidentSecond) ||
-                ($scope.formData.presidentSecond === $scope.formData.presidentThird) ||
-                ($scope.formData.presidentThird === $scope.formData.presidentFirst))) {
+            if (($scope.gamesList.length > 1) &&
+                (($scope.formData.gamesFirst === $scope.formData.gamesSecond) ||
+                ($scope.formData.gamesSecond === $scope.formData.gamesThird) ||
+                ($scope.formData.gamesThird === $scope.formData.gamesFirst))) {
                 $modal.open({
                     templateUrl: '../../partials/errorModal.html',
                     controller: 'choiceErrorController'
@@ -64,9 +64,9 @@ angular.module('electionsApp')
             }
 
             // Set the next state
-            localStorageService.set('nextState', 'games');
+            localStorageService.set('nextState', 'thanks');
 
             // Redirect to president
-            $state.go('form.games');
+            $state.go('form.thanks');
         };
     });

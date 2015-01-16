@@ -6,6 +6,7 @@ angular.module('electionsApp')
             localStorageService.clearAll();
 
             // Redirect to login page
-            $state.go('login');
+            // $state.go('login');
+            console.log($scope.formData);
         };
     });

@@ -18,10 +18,13 @@ angular.module('electionsApp')
             }
         };
     })
-    .controller('loginErrorController', function loginErrorController($scope) {
+    .controller('loginErrorController', function loginErrorController($modalInstance, $scope) {
         $scope.error = {};
         $scope.error.name = 'Login Error';
-        $scope.error.msg = 'Invalid Password';
+        $scope.error.msg = 'Please enter a valid password';
+
+        // Dismiss the modal
+        $scope.dismiss = function () {
+            $modalInstance.dismiss('cancel');
+        };
     });
-
-

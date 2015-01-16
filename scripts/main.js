@@ -2,13 +2,10 @@
 function checkLogin($state, localStorageService) {
     var isLoggedIn = localStorageService.get('isLoggedIn');
     var nextState = localStorageService.get('nextState');
-    console.log(nextState);
 
+    // Redirect to login if login is not set
     if (!isLoggedIn && nextState !== $state.current.stateName) {
-        // $state.go('login');
-        console.log('Not logged in');
-    } else {
-        console.log('logged in');
+        $state.go('login');
     }
 }
 
@@ -54,6 +51,14 @@ electionsApp.config(function($urlRouterProvider, $stateProvider) {
         controller: 'presidentController',
         onEnter: checkLogin
     })
+    .state('form.games', {
+        url: '/games',
+        templateUrl: 'partials/form-games.html',
+        stateName: 'games',
+        stateCode: 4,
+        controller: 'gamesController',
+        onEnter: checkLogin
+    })
     .state('form.thanks', {
         url: '/thanks',
         templateUrl: 'partials/form-thanks.html',
@@ -67,6 +72,7 @@ electionsApp.config(function($urlRouterProvider, $stateProvider) {
 electionsApp.factory('dataFactory', function() {
     var exports = {};
 
+    // All possible batches
     exports.batches = [
         { code: 'y10', fullName: 'UG, Y10'},
         { code: 'y11', fullName: 'UG, Y11'},
@@ -74,6 +80,7 @@ electionsApp.factory('dataFactory', function() {
         { code: 'y13', fullName: 'UG, Y13'}
     ];
 
+    // Get the names of senators
     exports.getSenators = function (batch) {
         var senators = {
             'y11': [ { 'id': 1, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' },
@@ -90,14 +97,26 @@ electionsApp.factory('dataFactory', function() {
         return senators[batch];
     };
 
+    // Get the names of presidents form the DB
     exports.getPresidents = function () {
-        var presidents = [
-            { 'id': 100, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' },
-            { 'id': 101, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' }];
+        var candidates = [
+            { 'id': 101, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' },
+            { 'id': 103, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' },
+            { 'id': 102, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' }];
 
-        return presidents;
+        return candidates;
     };
 
+    // Get the names of candidates for games form the DB
+    exports.getGames = function () {
+        var candidates = [
+            { 'id': 201, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' }];
+
+        return candidates;
+    };
+
+
+    // Settings for the application
     exports.settings = {
         mainPassword: 'srijan',
         cancelPassword: 'cancel'
