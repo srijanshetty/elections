@@ -103,7 +103,7 @@ electionsApp.factory('dataFactory', function($http) {
                      { 'id': 9, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' }]
         };
 
-        return senators[batch];
+        return senators[batch] || [];
     };
 
     // Get the names of presidents form the DB

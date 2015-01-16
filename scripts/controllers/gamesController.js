@@ -3,6 +3,15 @@ angular.module('electionsApp')
         // Make a list of senators available to the view
         $scope.gamesList = dataFactory.getGames();
 
+        // Setup the way the candidates will be displayed
+        if ($scope.gamesList.length >= 3) {
+            $scope.candidateClass = 'col-sm-4';
+        } else if ($scope.gamesList.length === 2) {
+            $scope.candidateClass = 'col-sm-6';
+        } else {
+            $scope.candidateClass = 'col-sm-12';
+        }
+
         // Skip this step if there are no items in the list
         if ( !$scope.gamesList || $scope.gamesList.length === 0) {
             // Set the next state

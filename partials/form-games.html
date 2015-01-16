@@ -1,20 +1,20 @@
 <form ng-submit="processGamesSubmit()">
     <div class="row">
-        <div class="col-sm-4 candidate-cell text-center" ng-repeat="candidate in gamesList">
+        <div class="candidate-cell text-center" ng-repeat="candidate in gamesList" ng-class="candidateClass">
             <img src="{{candidate.image}}">
             <p>{{candidate.name}}</p>
-            <div class="col-sm-offset-4 text-left">
+            <div>
                 <p>
                     <input type="radio" name="candidate-first" ng-model="formData.gamesFirst" value="{{candidate.id}}">
-                    First Preference
+                    1st Preference
                 </p>
-                <p ng-show="presidentList.length >=2">
+                <p ng-show="gamesList.length >=2">
                     <input type="radio" name="candidate-second" ng-model="formData.gamesSecond" value="{{candidate.id}}">
-                    Second Preference
+                    2nd Preference
                 </p>
-                <p ng-show="presidentList.length >= 3">
+                <p ng-show="gamesList.length >= 3">
                     <input type="radio" name="candidate-third" ng-model="formData.gamesThird" value="{{candidate.id}}">
-                    Third Preference
+                    3rd Preference
                 </p>
             </div>
         </div>

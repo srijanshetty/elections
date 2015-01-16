@@ -1,20 +1,20 @@
-<form ng-submit="processSenatorSubmit()" class="candidates-container">
+<form ng-submit="processSenatorSubmit()">
     <div class="row">
-        <div class="col-sm-3 candidate-cell text-center" ng-repeat="candidate in senatorList">
+        <div class="candidate-cell text-center" ng-repeat="candidate in senatorList" ng-class="candidateClass">
             <img src="{{candidate.image}}">
             <p>{{candidate.name}}</p>
-            <div class="col-sm-offset-3 text-left">
+            <div>
                 <p>
                     <input type="radio" name="candidate-first" ng-model="formData.senatorFirst" value="{{candidate.id}}">
-                    First Preference
+                    1st Preference
                 </p>
                 <p ng-show="senatorList.length >= 2">
                     <input type="radio" name="candidate-second" ng-model="formData.senatorSecond" value="{{candidate.id}}">
-                    Second Preference
+                    2nd Preference
                 </p>
                 <p ng-show="senatorList.length >= 3">
                     <input type="radio" name="candidate-third" ng-model="formData.senatorThird" value="{{candidate.id}}">
-                    Third Preference
+                    3rd Preference
                 </p>
             </div>
         </div>

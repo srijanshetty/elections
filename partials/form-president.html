@@ -1,20 +1,20 @@
 <form ng-submit="processPresidentSubmit()">
     <div class="row">
-        <div class="col-sm-4 candidate-cell text-center" ng-repeat="candidate in presidentList">
+        <div class="candidate-cell text-center" ng-repeat="candidate in presidentList" ng-class="candidateClass">
             <img src="{{candidate.image}}">
             <p>{{candidate.name}}</p>
-            <div class="col-sm-offset-4 text-left">
+            <div>
                 <p>
                     <input type="radio" name="candidate-first" ng-model="formData.presidentFirst" value="{{candidate.id}}">
-                    First Preference
+                    1st Preference
                 </p>
                 <p ng-show="presidentList.length >=2">
                     <input type="radio" name="candidate-second" ng-model="formData.presidentSecond" value="{{candidate.id}}">
-                    Second Preference
+                    2nd Preference
                 </p>
                 <p ng-show="presidentList.length >= 3">
                     <input type="radio" name="candidate-third" ng-model="formData.presidentThird" value="{{candidate.id}}">
-                    Third Preference
+                    3rd Preference
                 </p>
             </div>
         </div>
