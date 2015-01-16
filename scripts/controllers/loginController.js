@@ -1,5 +1,5 @@
 angular.module('electionsApp')
-    .controller('loginController', function($state, $scope, localStorageService, dataFactory, $modal) {
+    .controller('loginController', function loginController($state, $scope, localStorageService, dataFactory, $modal) {
         // Get the number of votes cast
         $scope.voteCount = localStorageService.get('voteCount');
 

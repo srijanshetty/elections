@@ -1,5 +1,5 @@
 angular.module('electionsApp')
-    .controller('formController', function ($rootScope, $state, dataFactory, $scope, $modal, localStorageService) {
+    .controller('formController', function formController($rootScope, $state, dataFactory, $scope, $modal, localStorageService) {
         var vm = $scope;
 
         // To store formData
