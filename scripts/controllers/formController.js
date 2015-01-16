@@ -35,7 +35,7 @@ angular.module('electionsApp')
         };
 
         // For the breadcrumb navigation
-        vm.totalStates = 7;
+        vm.totalStates = dataFactory.totalStates;
         vm.range = function(n) {
             return new Array(n);
         };

@@ -1,57 +1,57 @@
 angular.module('electionsApp')
-    .controller('scienceController', function scienceController($state, $scope, localStorageService, dataFactory, $modal) {
+    .controller('filmsController', function filmsController($state, $scope, localStorageService, dataFactory, $modal) {
         // Make a list of senators available to the view
-        $scope.scienceList = dataFactory.getScience();
+        $scope.filmsList = dataFactory.getFilms();
 
         // Setup the way the candidates will be displayed
-        if ($scope.scienceList.length >= 3) {
+        if ($scope.filmsList.length >= 3) {
             $scope.candidateClass = 'col-sm-4';
-        } else if ($scope.scienceList.length === 2) {
+        } else if ($scope.filmsList.length === 2) {
             $scope.candidateClass = 'col-sm-6';
         } else {
             $scope.candidateClass = 'col-sm-12';
         }
 
         // Skip this step if there are no items in the list
-        if ( !$scope.scienceList || $scope.scienceList.length === 0) {
+        if ( !$scope.filmsList || $scope.filmsList.length === 0) {
             // Set the next state
-            localStorageService.set('nextState', 'films');
+            localStorageService.set('nextState', 'submit');
 
-            $state.go('form.films');
+            $state.go('form.submit');
         }
 
         // Process no preference
         $scope.processNoPreference = function () {
-            $scope.formData.scienceNoPreference = true;
+            $scope.formData.filmsNoPreference = true;
 
             // Set the next state
-            localStorageService.set('nextState', 'films');
+            localStorageService.set('nextState', 'submit');
 
-            // Redirect to films
-            $state.go('form.films');
+            // Redirect to submit
+            $state.go('form.submit');
         };
 
         // Process the submit request
-        $scope.processScienceSubmit = function () {
+        $scope.processFilmsSubmit = function () {
             // Make sure the correct number of choices have been entered
-            if ($scope.scienceList.length >= 3) {
-                if (!$scope.formData.scienceFirst || !$scope.formData.scienceSecond || !$scope.formData.scienceThird) {
+            if ($scope.filmsList.length >= 3) {
+                if (!$scope.formData.filmsFirst || !$scope.formData.filmsSecond || !$scope.formData.filmsThird) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
                         controller: 'threePreferencesErrorController'
                     });
                     return;
                 }
-            } else if ($scope.scienceList.length === 2) {
-                if (!$scope.formData.scienceFist || !$scope.formData.scienceSecond) {
+            } else if ($scope.filmsList.length === 2) {
+                if (!$scope.formData.filmsFist || !$scope.formData.filmsSecond) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
                         controller: 'twoPreferencesErrorController'
                     });
                     return;
                 }
-            } else if ($scope.scienceList.length === 1) {
-                if (!$scope.formData.scienceFirst) {
+            } else if ($scope.filmsList.length === 1) {
+                if (!$scope.formData.filmsFirst) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
                         controller: 'onePreferenceErrorController'
@@ -61,10 +61,10 @@ angular.module('electionsApp')
             }
 
             // The choice of candidates must be distinct
-            if (($scope.scienceList.length > 1) &&
-                (($scope.formData.scienceFirst === $scope.formData.scienceSecond) ||
-                ($scope.formData.scienceSecond === $scope.formData.scienceThird) ||
-                ($scope.formData.scienceThird === $scope.formData.scienceFirst))) {
+            if (($scope.filmsList.length > 1) &&
+                (($scope.formData.filmsFirst === $scope.formData.filmsSecond) ||
+                ($scope.formData.filmsSecond === $scope.formData.filmsThird) ||
+                ($scope.formData.filmsThird === $scope.formData.filmsFirst))) {
                 $modal.open({
                     templateUrl: 'partials/errorModal.html',
                     controller: 'choiceErrorController'
@@ -73,9 +73,9 @@ angular.module('electionsApp')
             }
 
             // Set the next state
-            localStorageService.set('nextState', 'films');
+            localStorageService.set('nextState', 'submit');
 
             // Redirect to president
-            $state.go('form.films');
+            $state.go('form.submit');
         };
     });

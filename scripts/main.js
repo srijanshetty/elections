@@ -72,7 +72,7 @@ electionsApp.config(function($urlRouterProvider, $stateProvider) {
         url: '/cultural',
         templateUrl: 'partials/form-cultural.html',
         stateName: 'cultural',
-        stateCode: 4,
+        stateCode: 5,
         controller: 'culturalController',
         onEnter: checkLogin
     })
@@ -80,15 +80,23 @@ electionsApp.config(function($urlRouterProvider, $stateProvider) {
         url: '/science',
         templateUrl: 'partials/form-science.html',
         stateName: 'science',
-        stateCode: 4,
+        stateCode: 6,
         controller: 'scienceController',
+        onEnter: checkLogin
+    })
+    .state('form.films', {
+        url: '/films',
+        templateUrl: 'partials/form-films.html',
+        stateName: 'films',
+        stateCode: 7,
+        controller: 'filmsController',
         onEnter: checkLogin
     })
     .state('form.submit', {
         url: '/submit',
         templateUrl: 'partials/form-submit.html',
         stateName: 'submit',
-        stateCode: 7,
+        stateCode: 8,
         controller: 'submitController',
         onEnter: checkLogin
     });
@@ -148,8 +156,16 @@ electionsApp.factory('dataFactory', function($http) {
         return candidates;
     };
 
-    // Get the names of candidates for cultural form the DB
+    // Get the names of candidates for science form the DB
     exports.getScience = function () {
+        var candidates = [
+            { 'id': 201, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' }];
+
+        return candidates;
+    };
+
+    // Get the names of candidates for films form the DB
+    exports.getFilms = function () {
         var candidates = [
             { 'id': 201, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' }];
 
