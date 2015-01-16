@@ -19,7 +19,8 @@
       "min_height": 600,
       "max_width": 1366,
       "max_height": 968,
-      "position": "mouse"
+      "position": "mouse",
+      "fullscreen": true
   },
   "webkit": {
       "plugin": false,
