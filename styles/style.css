@@ -88,3 +88,8 @@ body
 .modal-body {
     margin-left: 10px;
 }
+
+.login-footer {
+    background-color: #ededed;
+    padding: 10px 0;
+}

@@ -16,7 +16,7 @@ function checkLogin($state, localStorageService) {
 var electionsApp = angular.module('electionsApp', ['ui.router', 'LocalStorageModule', 'ui.bootstrap']);
 
 // Setup the router
-electionsApp.config(function($urlRouterProvider, $stateProvider) {
+electionsApp.config(function appConfiguration($urlRouterProvider, $stateProvider) {
     $urlRouterProvider.otherwise('/login');
 
     $stateProvider
@@ -102,8 +102,17 @@ electionsApp.config(function($urlRouterProvider, $stateProvider) {
     });
 });
 
-electionsApp.factory('dataFactory', function($http) {
+electionsApp.factory('dataFactory', function($http, localStorageService) {
     var exports = {};
+
+    // Set up the database
+    var voteCount = localStorageService.get('voteCount');
+    if (!voteCount) {
+        localStorageService.set('voteCount', 0);
+    }
+
+    // total Number of states
+    exports.totalStates = 8;
 
     // All possible batches
     exports.batches = [

@@ -3,13 +3,16 @@ angular.module('electionsApp')
         // Process the submit request
         $scope.processSubmitSubmit = function () {
             // Clean up
-            localStorageService.clearAll();
-
-            console.log($scope.formData);
+            localStorageService.remove('nextState');
+            localStorageService.remove('isLoggedIn');
 
             var controller = '';
             if (true) {
                 controller = 'successSubmitController';
+
+                // Update voteCount
+                var votes = localStorageService.get('voteCount');
+                localStorageService.set('voteCount', votes + 1);
             } else {
                 controller = 'failedSubmitController';
             }

@@ -61,14 +61,17 @@ angular.module('electionsApp')
             modalInstance.result.then(function (status) {
                 if (status === true) {
                     // Clean Up state before loggin out
-                    localStorageService.clearAll();
+                    localStorageService.remove('nextState');
+                    localStorageService.remove('isLoggedIn');
+
+                    // Redirect
                     $state.go('login');
                 }
             });
         };
     });
 
-angular.module('electionsApp')
+    angular.module('electionsApp')
     .controller('closeModalController', function ($scope, $modalInstance, dataFactory) {
         var vm = $scope;
 
