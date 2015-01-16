@@ -3,6 +3,10 @@ function checkLogin($state, localStorageService) {
     var isLoggedIn = localStorageService.get('isLoggedIn');
     var nextState = localStorageService.get('nextState');
 
+    // Are we still loggedIN
+    console.log(isLoggedIn);
+    console.log(nextState);
+
     // Redirect to login if login is not set
     if (!isLoggedIn && nextState !== $state.current.stateName) {
         $state.go('login');
@@ -74,7 +78,7 @@ electionsApp.config(function($urlRouterProvider, $stateProvider) {
     });
 });
 
-electionsApp.factory('dataFactory', function() {
+electionsApp.factory('dataFactory', function($http) {
     var exports = {};
 
     // All possible batches
@@ -122,15 +126,14 @@ electionsApp.factory('dataFactory', function() {
 
 
     // Settings for the application
-    exports.settings = (function getSettings() {
-        var settings = {
-            mainPassword: 'srijan',
-            cancelPassword: 'cancel',
-            adminPassword: 'admin'
-        };
-
-        return settings;
-    })();
+    exports.settings = {};
+    $http.get('settings.json')
+        .success(function getSettings(data) {
+            exports.settings = data;
+        })
+        .error(function () {
+            window.alert('Error');
+        });
 
     return exports;
 });
