@@ -27,4 +27,3 @@ angular.module('electionsApp')
             $modalInstance.dismiss('cancel');
         };
     });
-
