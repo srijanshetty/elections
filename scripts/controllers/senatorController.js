@@ -46,7 +46,7 @@ angular.module('electionsApp')
                  ($scope.formData.senatorSecond === $scope.formData.senatorThird) ||
                  ($scope.formData.senatorThird === $scope.formData.senatorFirst))) {
                 $modal.open({
-                    templateUrl: '../../partials/errorModal.html',
+                    templateUrl: 'partials/errorModal.html',
                     controller: 'choiceErrorController'
                 });
                 return;
