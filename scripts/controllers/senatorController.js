@@ -17,7 +17,7 @@ angular.module('electionsApp')
             if ($scope.senatorList.length >= 3) {
                 if (!$scope.formData.senatorFirst || !$scope.formData.senatorSecond || !$scope.formData.senatorThird) {
                     $modal.open({
-                        templateUrl: '../../partials/errorModal.html',
+                        templateUrl: 'partials/errorModal.html',
                         controller: 'threePreferencesErrorController'
                     });
                     return;
@@ -25,7 +25,7 @@ angular.module('electionsApp')
             } else if ($scope.senatorList.length === 2) {
                 if (!$scope.formData.senatorFirst || !$scope.formData.senatorSecond) {
                     $modal.open({
-                        templateUrl: '../../partials/errorModal.html',
+                        templateUrl: 'partials/errorModal.html',
                         controller: 'twoPreferencesErrorController'
                     });
                     return;
@@ -33,7 +33,7 @@ angular.module('electionsApp')
             } else if ($scope.senatorList.length === 1) {
                 if (!$scope.formData.senatorFirst) {
                     $modal.open({
-                        templateUrl: '../../partials/errorModal.html',
+                        templateUrl: 'partials/errorModal.html',
                         controller: 'onePreferenceErrorController'
                     });
                     return;

@@ -28,7 +28,7 @@ angular.module('electionsApp')
             if ($scope.presidentList.length >= 3) {
                 if (!$scope.formData.presidentFirst || !$scope.formData.presidentSecond || !$scope.formData.presidentThird) {
                     $modal.open({
-                        templateUrl: '../../partials/errorModal.html',
+                        templateUrl: 'partials/errorModal.html',
                         controller: 'threePreferencesErrorController'
                     });
                     return;
@@ -36,7 +36,7 @@ angular.module('electionsApp')
             } else if ($scope.presidentList.length === 2) {
                 if (!$scope.formData.presidentFirst || !$scope.formData.presidentSecond) {
                     $modal.open({
-                        templateUrl: '../../partials/errorModal.html',
+                        templateUrl: 'partials/errorModal.html',
                         controller: 'twoPreferencesErrorController'
                     });
                     return;
@@ -44,7 +44,7 @@ angular.module('electionsApp')
             } else if ($scope.presidentList.length === 1) {
                 if (!$scope.formData.presidentFirst) {
                     $modal.open({
-                        templateUrl: '../../partials/errorModal.html',
+                        templateUrl: 'partials/errorModal.html',
                         controller: 'onePreferenceErrorController'
                     });
                     return;

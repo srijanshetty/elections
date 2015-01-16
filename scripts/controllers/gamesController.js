@@ -28,7 +28,7 @@ angular.module('electionsApp')
             if ($scope.gamesList.length >= 3) {
                 if (!$scope.formData.gamesFirst || !$scope.formData.gamesSecond || !$scope.formData.gamesThird) {
                     $modal.open({
-                        templateUrl: '../../partials/errorModal.html',
+                        templateUrl: 'partials/errorModal.html',
                         controller: 'threePreferencesErrorController'
                     });
                     return;
@@ -36,7 +36,7 @@ angular.module('electionsApp')
             } else if ($scope.gamesList.length === 2) {
                 if (!$scope.formData.gamesFist || !$scope.formData.gamesSecond) {
                     $modal.open({
-                        templateUrl: '../../partials/errorModal.html',
+                        templateUrl: 'partials/errorModal.html',
                         controller: 'twoPreferencesErrorController'
                     });
                     return;
@@ -44,7 +44,7 @@ angular.module('electionsApp')
             } else if ($scope.gamesList.length === 1) {
                 if (!$scope.formData.gamesFirst) {
                     $modal.open({
-                        templateUrl: '../../partials/errorModal.html',
+                        templateUrl: 'partials/errorModal.html',
                         controller: 'onePreferenceErrorController'
                     });
                     return;
@@ -57,7 +57,7 @@ angular.module('electionsApp')
                 ($scope.formData.gamesSecond === $scope.formData.gamesThird) ||
                 ($scope.formData.gamesThird === $scope.formData.gamesFirst))) {
                 $modal.open({
-                    templateUrl: '../../partials/errorModal.html',
+                    templateUrl: 'partials/errorModal.html',
                     controller: 'choiceErrorController'
                 });
                 return;

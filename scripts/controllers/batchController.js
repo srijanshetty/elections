@@ -5,7 +5,7 @@ angular.module('electionsApp')
             // Check the validation of the form
             if ($scope.formData.batch === '') {
                 $modal.open({
-                    templateUrl: '../../partials/errorModal.html',
+                    templateUrl: 'partials/errorModal.html',
                     controller: 'batchErrorController'
                 });
             } else {
