@@ -76,6 +76,14 @@ electionsApp.config(function($urlRouterProvider, $stateProvider) {
         controller: 'culturalController',
         onEnter: checkLogin
     })
+    .state('form.science', {
+        url: '/science',
+        templateUrl: 'partials/form-science.html',
+        stateName: 'science',
+        stateCode: 4,
+        controller: 'scienceController',
+        onEnter: checkLogin
+    })
     .state('form.submit', {
         url: '/submit',
         templateUrl: 'partials/form-submit.html',
@@ -134,6 +142,14 @@ electionsApp.factory('dataFactory', function($http) {
 
     // Get the names of candidates for cultural form the DB
     exports.getCultural = function () {
+        var candidates = [
+            { 'id': 201, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' }];
+
+        return candidates;
+    };
+
+    // Get the names of candidates for cultural form the DB
+    exports.getScience = function () {
         var candidates = [
             { 'id': 201, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' }];
 

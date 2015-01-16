@@ -1,0 +1,36 @@
+<form ng-submit="processScienceSubmit()">
+    <div class="row">
+        <div class="candidate-cell text-center" ng-repeat="candidate in scienceList" ng-class="candidateClass">
+            <img src="{{candidate.image}}">
+            <p>{{candidate.name}}</p>
+            <div>
+                <p>
+                    <input type="radio" name="candidate-first" ng-model="formData.scienceFirst" value="{{candidate.id}}">
+                    1st Preference
+                </p>
+                <p ng-show="scienceList.length >=2">
+                    <input type="radio" name="candidate-second" ng-model="formData.scienceSecond" value="{{candidate.id}}">
+                    2nd Preference
+                </p>
+                <p ng-show="scienceList.length >= 3">
+                    <input type="radio" name="candidate-third" ng-model="formData.scienceThird" value="{{candidate.id}}">
+                    3rd Preference
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group text-center">
+        <button class="btn btn-info" type="submit">
+            Cast Vote
+            <span class="glyphicon glyphicon-circle-arrow-right" ></span>
+        </button>
+    </div>
+
+    <div class="form-group text-center">
+        <button class="btn btn-danger" type="button" ng-click="processNoPreference()">
+            No Preference
+            <span class="glyphicon glyphicon-circle-arrow-right" ></span>
+        </button>
+    </div>
+</form>
