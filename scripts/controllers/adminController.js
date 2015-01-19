@@ -11,4 +11,11 @@ angular.module('electionsApp')
             // Redirect to login state
             $state.go('login');
         };
+
+        // Exit the application
+        $scope.exit = function () {
+            // Exit the application
+            var gui = require('nw.gui');
+            gui.App.quit();
+        };
     });

@@ -119,11 +119,20 @@
         </table>
     </div>
 
-    <div class="form-group text-center">
-        <button class="btn btn-danger" type="button" ng-click="clearVoteCount()">
-            Clear Vote Count
-            <span class="glyphicon glyphicon-circle-arrow-right" ></span>
-        </button>
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <button class="btn btn-warning" type="button" ng-click="clearVoteCount()">
+                Clear Vote Count
+                <span class="glyphicon glyphicon-circle-arrow-right" ></span>
+            </button>
+        </div>
+
+        <div class="col-md-6 text-center">
+            <button class="btn btn-danger" type="button" ng-click="exit()">
+                Exit
+                <span class="glyphicon glyphicon-circle-arrow-right" ></span>
+            </button>
+        </div>
     </div>
 
     <!-- Footer which shows the step number -->
