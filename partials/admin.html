@@ -79,7 +79,12 @@
             </thead>
 
             <tbody>
-                <tr>
+                <tr ng-repeat="gensec in gensecs | filter:{ position: 'president'}">
+                    <td>{{$index + 1}}</td>
+                    <td>{{gensec.name}}</td>
+                    <td>{{getVotes(gensec.id, 1)}}</td>
+                    <td>{{getVotes(gensec.id, 2)}}</td>
+                    <td>{{getVotes(gensec.id, 3)}}</td>
                 </tr>
             </tbody>
         </table>
@@ -99,7 +104,12 @@
             </thead>
 
             <tbody>
-                <tr>
+                <tr ng-repeat="gensec in gensecs | filter:{ position: 'games'}">
+                    <td>{{$index + 1}}</td>
+                    <td>{{gensec.name}}</td>
+                    <td>{{getVotes(gensec.id, 1)}}</td>
+                    <td>{{getVotes(gensec.id, 2)}}</td>
+                    <td>{{getVotes(gensec.id, 3)}}</td>
                 </tr>
             </tbody>
         </table>
@@ -119,7 +129,12 @@
             </thead>
 
             <tbody>
-                <tr>
+                <tr ng-repeat="gensec in gensecs | filter:{ position: 'cultural'}">
+                    <td>{{$index + 1}}</td>
+                    <td>{{gensec.name}}</td>
+                    <td>{{getVotes(gensec.id, 1)}}</td>
+                    <td>{{getVotes(gensec.id, 2)}}</td>
+                    <td>{{getVotes(gensec.id, 3)}}</td>
                 </tr>
             </tbody>
         </table>
@@ -139,7 +154,12 @@
             </thead>
 
             <tbody>
-                <tr>
+                <tr ng-repeat="gensec in gensecs | filter:{ position: 'science'}">
+                    <td>{{$index + 1}}</td>
+                    <td>{{gensec.name}}</td>
+                    <td>{{getVotes(gensec.id, 1)}}</td>
+                    <td>{{getVotes(gensec.id, 2)}}</td>
+                    <td>{{getVotes(gensec.id, 3)}}</td>
                 </tr>
             </tbody>
         </table>
@@ -159,7 +179,12 @@
             </thead>
 
             <tbody>
-                <tr>
+                <tr ng-repeat="gensec in gensecs | filter:{ position: 'films'}">
+                    <td>{{$index + 1}}</td>
+                    <td>{{gensec.name}}</td>
+                    <td>{{getVotes(gensec.id, 1)}}</td>
+                    <td>{{getVotes(gensec.id, 2)}}</td>
+                    <td>{{getVotes(gensec.id, 3)}}</td>
                 </tr>
             </tbody>
         </table>

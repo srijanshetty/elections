@@ -1,7 +1,9 @@
 angular.module('electionsApp')
     .factory('dataFactory', function() {
+        var exports = {};
+
         // The list of gensecs
-        var gensecs = [
+        exports.gensecs = [
             { 'id': 101, 'name': 'Gautam Pratap Singh', 'position': 'president', 'image': 'assets/candidate.jpg' },
             { 'id': 102, 'name': 'Pushpjeet Singh Sodhi', 'position': 'president', 'image': 'assets/candidate.jpg' },
             { 'id': 103, 'name': 'Ashish Aggarwal', 'position': 'cultural', 'image': 'assets/candidate.jpg' },
@@ -13,7 +15,7 @@ angular.module('electionsApp')
         ];
 
         // List of senators
-        var senators = {
+        exports.senators = {
             'y13': [
                 { 'id': 1, 'name': 'Simrat Singh', 'image': 'assets/candidate.jpg' },
                 { 'id': 2, 'name': 'Abhimanyu Arora', 'image': 'assets/candidate.jpg' },
@@ -36,9 +38,6 @@ angular.module('electionsApp')
             ]
         };
 
-        // Exports object
-        var exports = {};
-
         // total Number of states
         exports.totalStates = 8;
 
@@ -51,12 +50,12 @@ angular.module('electionsApp')
 
         // Get the names of senators
         exports.getSenators = function (batch) {
-            return senators[batch] || [];
+            return exports.senators[batch] || [];
         };
 
         // Get the names of presidents form the DB
         exports.getCandidates = function getCandidates(key) {
-            return gensecs.filter(function (value) {
+            return exports.gensecs.filter(function (value) {
                 return (value.position === key);
             });
         };
