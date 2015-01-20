@@ -1,7 +1,7 @@
 angular.module('electionsApp')
     .controller('presidentController', function presidentContoller($state, $scope, localStorageService, dataFactory, $modal) {
         // Make a list of senators available to the view
-        $scope.presidentList = dataFactory.getPresidents();
+        $scope.presidentList = dataFactory.getCandidates($state.current.stateName);
 
         // Setup the way the candidates will be displayed
         if ($scope.presidentList.length >= 3) {

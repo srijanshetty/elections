@@ -1,7 +1,7 @@
 angular.module('electionsApp')
     .controller('gamesController', function gamesController($state, $scope, localStorageService, dataFactory, $modal) {
         // Make a list of senators available to the view
-        $scope.gamesList = dataFactory.getGames();
+        $scope.gamesList = dataFactory.getCandidates($state.current.stateName);
 
         // Setup the way the candidates will be displayed
         if ($scope.gamesList.length >= 3) {

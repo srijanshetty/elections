@@ -1,7 +1,7 @@
 angular.module('electionsApp')
     .controller('filmsController', function filmsController($state, $scope, localStorageService, dataFactory, $modal) {
         // Make a list of senators available to the view
-        $scope.filmsList = dataFactory.getFilms();
+        $scope.filmsList = dataFactory.getCandidates($state.current.stateName);
 
         // Setup the way the candidates will be displayed
         if ($scope.filmsList.length >= 3) {

@@ -1,7 +1,7 @@
 angular.module('electionsApp')
     .controller('culturalController', function culturalController($state, $scope, localStorageService, dataFactory, $modal) {
         // Make a list of senators available to the view
-        $scope.culturalList = dataFactory.getCultural();
+        $scope.culturalList = dataFactory.getCandidates($state.current.stateName);
 
         // Setup the way the candidates will be displayed
         if ($scope.culturalList.length >= 3) {
@@ -17,6 +17,7 @@ angular.module('electionsApp')
             // Set the next state
             localStorageService.set('nextState', 'science');
 
+            // Go to the science state
             $state.go('form.science');
         }
 

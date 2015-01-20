@@ -1,89 +1,77 @@
 angular.module('electionsApp')
-.factory('dataFactory', function($http, localStorageService) {
-    var exports = {};
+    .factory('dataFactory', function(localStorageService) {
+        // Get the vote count from the database
+        var voteCount = localStorageService.get('voteCount');
+        if (!voteCount) {
+            localStorageService.set('voteCount', 0);
+        }
 
-    // Set up the database
-    var voteCount = localStorageService.get('voteCount');
-    if (!voteCount) {
-        localStorageService.set('voteCount', 0);
-    }
+        // The list of gensecs
+        var gensecs = [
+            { 'id': 101, 'name': 'Gautam Pratap Singh', 'position': 'president', 'image': 'assets/candidate.jpg' },
+            { 'id': 102, 'name': 'Pushpjeet Singh', 'position': 'president', 'image': 'assets/candidate.jpg' },
+            { 'id': 103, 'name': 'Aashish Aggarwal', 'position': 'cultural', 'image': 'assets/candidate.jpg' },
+            { 'id': 104, 'name': 'Chirag Jha', 'position': 'science', 'image': 'assets/candidate.jpg' },
+            { 'id': 105, 'name': 'Rishi Gupta', 'position': 'science', 'image': 'assets/candidate.jpg' },
+            { 'id': 106, 'name': 'Prateek Mishra', 'position': 'films', 'image': 'assets/candidate.jpg' },
+            { 'id': 107, 'name': 'Balendu Shekhar', 'position': 'games', 'image': 'assets/candidate.jpg' },
+            { 'id': 108, 'name': 'M Surya Prakash', 'position': 'games', 'image': 'assets/candidate.jpg' }
+        ];
 
-    // total Number of states
-    exports.totalStates = 8;
-
-    // All possible batches
-    exports.batches = [
-        { code: 'y10', fullName: 'UG, Y10'},
-        { code: 'y11', fullName: 'UG, Y11'},
-        { code: 'y12', fullName: 'UG, Y12'},
-        { code: 'y13', fullName: 'UG, Y13'}
-    ];
-
-    // Get the names of senators
-    exports.getSenators = function (batch) {
+        // List of senators
         var senators = {
-            'y11': [ { 'id': 1, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' },
-                { 'id': 2, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' },
-                { 'id': 3, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' },
-                { 'id': 4, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' },
-                { 'id': 5, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' },
-                { 'id': 6, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' },
-                { 'id': 7, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' },
-                { 'id': 8, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' },
-                { 'id': 9, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' }]
+            'y13': [
+                { 'id': 1, 'name': 'Abhimanyu Arora', 'image': 'assets/candidate.jpg' },
+                { 'id': 2, 'name': 'Abhimanyu Arora', 'image': 'assets/candidate.jpg' },
+                { 'id': 3, 'name': 'Abhimanyu Arora', 'image': 'assets/candidate.jpg' },
+                { 'id': 4, 'name': 'Abhimanyu Arora', 'image': 'assets/candidate.jpg' },
+                { 'id': 5, 'name': 'Abhimanyu Arora', 'image': 'assets/candidate.jpg' },
+                { 'id': 6, 'name': 'Abhimanyu Arora', 'image': 'assets/candidate.jpg' },
+                { 'id': 7, 'name': 'Abhimanyu Arora', 'image': 'assets/candidate.jpg' },
+                { 'id': 8, 'name': 'Abhimanyu Arora', 'image': 'assets/candidate.jpg' }
+            ],
+            'y14': [
+                { 'id': 11, 'name': 'Abhimanyu Yadav', 'image': 'assets/candidate.jpg' },
+                { 'id': 12, 'name': 'Abhimanyu Arora', 'image': 'assets/candidate.jpg' },
+                { 'id': 13, 'name': 'Abhimanyu Arora', 'image': 'assets/candidate.jpg' },
+                { 'id': 14, 'name': 'Abhimanyu Arora', 'image': 'assets/candidate.jpg' },
+                { 'id': 15, 'name': 'Abhimanyu Arora', 'image': 'assets/candidate.jpg' },
+                { 'id': 16, 'name': 'Abhimanyu Arora', 'image': 'assets/candidate.jpg' },
+                { 'id': 17, 'name': 'Sagar Rastogi', 'image': 'assets/candidate.jpg' },
+                { 'id': 18, 'name': 'Vedant Goenka', 'image': 'assets/candidate.jpg' }
+            ]
         };
 
-        return senators[batch] || [];
-    };
+        // Exports object
+        var exports = {};
 
-    // Get the names of presidents form the DB
-    exports.getPresidents = function () {
-        var candidates = [
-            { 'id': 101, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' },
-            { 'id': 103, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' },
-            { 'id': 102, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' }];
+        // total Number of states
+        exports.totalStates = 8;
 
-            return candidates;
-    };
+        // All possible batches
+        exports.batches = [
+            { code: 'y13', fullName: 'UG, Y13'},
+            { code: 'y14', fullName: 'UG, Y14'}
+        ];
 
-    // Get the names of candidates for games form the DB
-    exports.getGames = function () {
-        var candidates = [
-            { 'id': 201, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' }];
+        // Get the names of senators
+        exports.getSenators = function (batch) {
+            return senators[batch] || [];
+        };
 
-            return candidates;
-    };
+        // Get the names of presidents form the DB
+        exports.getCandidates = function getCandidates(key) {
+            return gensecs.filter(function (value) {
+                return (value.position === key);
+            });
+        };
 
-    // Get the names of candidates for cultural form the DB
-    exports.getCultural = function () {
-        var candidates = [
-            { 'id': 201, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' }];
+        // Settings for the application
+        exports.settings = {
+            'mainPassword': 'srijan',
+            'cancelPassword': 'cancel',
+            'adminPassword': 'admin'
+        };
 
-            return candidates;
-    };
-
-    // Get the names of candidates for science form the DB
-    exports.getScience = function () {
-        var candidates = [
-            { 'id': 201, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' }];
-
-            return candidates;
-    };
-
-    // Get the names of candidates for films form the DB
-    exports.getFilms = function () {
-        var candidates = [
-            { 'id': 201, 'name': 'Abhimanyu Arora', 'rollNo': '11727', 'image': 'assets/candidate.jpg' }];
-
-            return candidates;
-    };
-
-    // Settings for the application
-    exports.settings = {
-        'mainPassword': 'srijan',
-        'cancelPassword': 'cancel',
-        'adminPassword': 'admin'
-    };
-
-    return exports;
-});
+        return exports;
+    });

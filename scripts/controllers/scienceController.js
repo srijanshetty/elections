@@ -1,7 +1,7 @@
 angular.module('electionsApp')
     .controller('scienceController', function scienceController($state, $scope, localStorageService, dataFactory, $modal) {
         // Make a list of senators available to the view
-        $scope.scienceList = dataFactory.getScience();
+        $scope.scienceList = dataFactory.getCandidates($state.current.stateName);
 
         // Setup the way the candidates will be displayed
         if ($scope.scienceList.length >= 3) {
