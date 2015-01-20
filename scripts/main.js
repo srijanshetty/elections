@@ -3,10 +3,6 @@ function checkLogin($state, localStorageService) {
     var isLoggedIn = localStorageService.get('isLoggedIn');
     var nextState = localStorageService.get('nextState');
 
-    // Are we still loggedIN
-    console.log(isLoggedIn);
-    console.log(nextState);
-
     // Redirect to login if login is not set
     if (!isLoggedIn && nextState !== $state.current.stateName) {
         $state.go('login');
@@ -103,4 +99,3 @@ angular.module('electionsApp')
         onEnter: checkLogin
     });
 });
-
