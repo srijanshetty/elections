@@ -2,12 +2,10 @@ angular.module('electionsApp')
     .controller('adminController', function adminController ($state, $scope, localStorageService, dataFactory) {
         $scope.gensecs = dataFactory.gensecs;
 
-        // Set up the values
-        $scope.presidentNoPreference = localStorageService.get('presidentNoPreference') || 0;
-        $scope.gamesNoPreference = localStorageService.get('gamesNoPreference') || 0;
-        $scope.culturalNoPreference = localStorageService.get('culturalNoPreference') || 0;
-        $scope.scienceNoPreference = localStorageService.get('scienceNoPreference') || 0;
-        $scope.filmsNoPreference = localStorageService.get('filmsNoPreference') || 0;
+        // Get no preference
+        $scope.getNoPreference = function(position) {
+            return localStorageService.get(position + 'NoPreference') || 0;
+        };
 
         // Get votes for a particular ID
         $scope.getVotes = function (id, preference) {
