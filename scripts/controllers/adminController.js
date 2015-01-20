@@ -35,11 +35,6 @@ angular.module('electionsApp')
 
         // Clear all the data
         $scope.clear = function() {
-            // Clear the data of the application
-            localStorageService.set('presidentNoPreference', 0);
-            localStorageService.set('gamesNoPreference', 0);
-            localStorageService.set('culturalNoPreference', 0);
-            localStorageService.set('scienceNoPreference', 0);
-            localStorageService.set('filmsNoPreference', 0);
+            localStorageService.clearAll();
         };
     });
