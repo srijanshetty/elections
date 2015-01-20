@@ -14,9 +14,7 @@ angular.module('electionsApp')
 
         // Skip this step if there are no items in the list
         if ( !$scope.filmsList || $scope.filmsList.length === 0) {
-            // Set the next state
             localStorageService.set('nextState', 'submit');
-
             $state.go('form.submit');
         }
 
@@ -24,10 +22,8 @@ angular.module('electionsApp')
         $scope.processNoPreference = function () {
             $scope.formData.filmsNoPreference = true;
 
-            // Set the next state
+            // Jump to next state
             localStorageService.set('nextState', 'submit');
-
-            // Redirect to submit
             $state.go('form.submit');
         };
 
@@ -43,7 +39,7 @@ angular.module('electionsApp')
                     return;
                 }
             } else if ($scope.filmsList.length === 2) {
-                if (!$scope.formData.filmsFist || !$scope.formData.filmsSecond) {
+                if (!$scope.formData.filmsFirst || !$scope.formData.filmsSecond) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
                         controller: 'twoPreferencesErrorController'

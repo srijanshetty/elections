@@ -14,9 +14,7 @@ angular.module('electionsApp')
 
         // Skip this step if there are no items in the list
         if ( !$scope.scienceList || $scope.scienceList.length === 0) {
-            // Set the next state
             localStorageService.set('nextState', 'films');
-
             $state.go('form.films');
         }
 
@@ -24,10 +22,8 @@ angular.module('electionsApp')
         $scope.processNoPreference = function () {
             $scope.formData.scienceNoPreference = true;
 
-            // Set the next state
+            // Jump to next state
             localStorageService.set('nextState', 'films');
-
-            // Redirect to films
             $state.go('form.films');
         };
 
@@ -43,7 +39,7 @@ angular.module('electionsApp')
                     return;
                 }
             } else if ($scope.scienceList.length === 2) {
-                if (!$scope.formData.scienceFist || !$scope.formData.scienceSecond) {
+                if (!$scope.formData.scienceFirst || !$scope.formData.scienceSecond) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
                         controller: 'twoPreferencesErrorController'

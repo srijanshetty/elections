@@ -14,9 +14,7 @@ angular.module('electionsApp')
 
         // Skip this step if there are no items in the list
         if ( !$scope.presidentList || $scope.presidentList.length === 0) {
-            // Set the next state
             localStorageService.set('nextState', 'games');
-
             $state.go('form.games');
         }
 
@@ -26,8 +24,6 @@ angular.module('electionsApp')
 
             // Set the next state
             localStorageService.set('nextState', 'games');
-
-            // Redirect to games
             $state.go('form.games');
         };
 

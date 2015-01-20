@@ -14,10 +14,7 @@ angular.module('electionsApp')
 
         // Skip this step if there are no items in the list
         if ( !$scope.culturalList || $scope.culturalList.length === 0) {
-            // Set the next state
             localStorageService.set('nextState', 'science');
-
-            // Go to the science state
             $state.go('form.science');
         }
 
@@ -25,10 +22,8 @@ angular.module('electionsApp')
         $scope.processNoPreference = function () {
             $scope.formData.culturalNoPreference = true;
 
-            // Set the next state
+            // Jump to next state
             localStorageService.set('nextState', 'science');
-
-            // Redirect to science
             $state.go('form.science');
         };
 
@@ -44,7 +39,7 @@ angular.module('electionsApp')
                     return;
                 }
             } else if ($scope.culturalList.length === 2) {
-                if (!$scope.formData.culturalFist || !$scope.formData.culturalSecond) {
+                if (!$scope.formData.culturalFirst || !$scope.formData.culturalSecond) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
                         controller: 'twoPreferencesErrorController'

@@ -14,9 +14,7 @@ angular.module('electionsApp')
 
         // Skip this step if there are no items in the list
         if ( !$scope.gamesList || $scope.gamesList.length === 0) {
-            // Set the next state
             localStorageService.set('nextState', 'cultural');
-
             $state.go('form.cultural');
         }
 
@@ -24,10 +22,8 @@ angular.module('electionsApp')
         $scope.processNoPreference = function () {
             $scope.formData.gamesNoPreference = true;
 
-            // Set the next state
+            // Jump to next state
             localStorageService.set('nextState', 'cultural');
-
-            // Redirect to cultural
             $state.go('form.cultural');
         };
 
@@ -43,7 +39,7 @@ angular.module('electionsApp')
                     return;
                 }
             } else if ($scope.gamesList.length === 2) {
-                if (!$scope.formData.gamesFist || !$scope.formData.gamesSecond) {
+                if (!$scope.formData.gamesFirst || !$scope.formData.gamesSecond) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
                         controller: 'twoPreferencesErrorController'
@@ -75,7 +71,7 @@ angular.module('electionsApp')
             // Set the next state
             localStorageService.set('nextState', 'cultural');
 
-            // Redirect to president
+            // Redirect to cultural
             $state.go('form.cultural');
         };
     });
