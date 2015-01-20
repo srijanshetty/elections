@@ -15,7 +15,7 @@ angular.module('electionsApp')
             'culturalFirst': '',
             'culturalSecond': '',
             'culturalThird': '',
-            'cultNoPreference': false,
+            'culturalNoPreference': false,
             'sportsFirst': '',
             'sportsSecond': '',
             'sportsThird': '',
