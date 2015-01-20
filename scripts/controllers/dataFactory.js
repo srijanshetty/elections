@@ -1,11 +1,5 @@
 angular.module('electionsApp')
-    .factory('dataFactory', function(localStorageService) {
-        // Get the vote count from the database
-        var voteCount = localStorageService.get('voteCount');
-        if (!voteCount) {
-            localStorageService.set('voteCount', 0);
-        }
-
+    .factory('dataFactory', function() {
         // The list of gensecs
         var gensecs = [
             { 'id': 101, 'name': 'Gautam Pratap Singh', 'position': 'president', 'image': 'assets/candidate.jpg' },
