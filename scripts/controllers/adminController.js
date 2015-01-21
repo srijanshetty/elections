@@ -1,6 +1,12 @@
 angular.module('electionsApp')
     .controller('adminController', function adminController ($state, $scope, localStorageService, dataFactory) {
         $scope.gensecs = dataFactory.gensecs;
+        $scope.batches = dataFactory.batches;
+
+        // Get senators
+        $scope.getSenators = function(batch) {
+            return dataFactory.senators[batch];
+        };
 
         // Get no preference
         $scope.getNoPreference = function(position) {
