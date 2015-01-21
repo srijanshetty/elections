@@ -3,7 +3,7 @@
         <div class="form-group">
             <div class="radio">
                 <div ng-repeat="batch in batches">
-                    <label> <input type="radio" ng-model="formData.batch" value="{{batch.code}}" checked> {{ batch.fullName }} </label>
+                    <label> <input type="radio" ng-model="formData.batch" value="{{batch}}" checked>{{batch}}</label>
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@ angular.module('electionsApp')
 
         // List of senators
         exports.senators = {
-            'y13': [
+            'UG, Y13': [
                 { 'id': 1, 'name': 'Simrat Singh', 'image': 'assets/candidate.jpg' },
                 { 'id': 2, 'name': 'Abhimanyu Arora', 'image': 'assets/candidate.jpg' },
                 { 'id': 3, 'name': 'Abhimanyu Arora', 'image': 'assets/candidate.jpg' },
@@ -26,7 +26,7 @@ angular.module('electionsApp')
                 { 'id': 7, 'name': 'Abhimanyu Arora', 'image': 'assets/candidate.jpg' },
                 { 'id': 8, 'name': 'Abhimanyu Arora', 'image': 'assets/candidate.jpg' }
             ],
-            'y14': [
+            'UG, Y14': [
                 { 'id': 11, 'name': 'Abhimanyu Yadav', 'image': 'assets/candidate.jpg' },
                 { 'id': 12, 'name': 'Ashutosh Ranka', 'image': 'assets/candidate.jpg' },
                 { 'id': 14, 'name': 'Manikanta Reddy', 'image': 'assets/candidate.jpg' },
@@ -42,11 +42,7 @@ angular.module('electionsApp')
         exports.totalStates = 8;
 
         // All possible batches
-        exports.batches = [
-            { code: 'y12', fullName: 'UG, Y12'},
-            { code: 'y13', fullName: 'UG, Y13'},
-            { code: 'y14', fullName: 'UG, Y14'}
-        ];
+        exports.batches = Object.keys(exports.senators);
 
         // Get the names of senators
         exports.getSenators = function (batch) {
