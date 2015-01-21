@@ -1,5 +1,12 @@
 angular.module('electionsApp')
     .controller('submitController', function submitController($state, $scope, localStorageService, $modal) {
+        function setPreference(preferenceID, preference) {
+            if (preferenceID) {
+                var preferences = localStorageService.get(preferenceID + '_' + preference) || 0;
+                localStorageService.set(preferenceID + '_' + preference, preferences + 1);
+            }
+        }
+
         // Process the submit request
         $scope.processSubmitSubmit = function () {
             // Clean up
@@ -13,27 +20,14 @@ angular.module('electionsApp')
             var votes = localStorageService.get('voteCount') || 0;
             localStorageService.set('voteCount', votes + 1);
 
-            var firstPreferenceID, firstPreferences;
-            var secondPreferenceID, secondPreferences;
-            var thirdPreferenceID, thirdPreferences;
-
             // Process president
             if ($scope.formData.presidentNoPreference) {
                 var presidentNoPreference = localStorageService.get('presidentNoPreference') || 0;
                 localStorageService.set('presidentNoPreference', presidentNoPreference + 1);
             } else {
-                // Process preferences
-                firstPreferenceID = $scope.formData.presidentFirst;
-                firstPreferences = localStorageService.get(firstPreferenceID + '_' + 1) || 0;
-                localStorageService.set(firstPreferenceID + '_' + 1, firstPreferences + 1);
-
-                secondPreferenceID = $scope.formData.presidentSecond;
-                secondPreferences = localStorageService.get(secondPreferenceID + '_' + 1) || 0;
-                localStorageService.set(secondPreferenceID + '_' + 2, secondPreferences + 1);
-
-                thirdPreferenceID = $scope.formData.presidentThird;
-                thirdPreferences = localStorageService.get(thirdPreferenceID + '_' + 1) || 0;
-                localStorageService.set(thirdPreferenceID + '_' + 3, thirdPreferences + 1);
+                setPreference($scope.formData.presidentFirst, 1);
+                setPreference($scope.formData.presidentSecond, 2);
+                setPreference($scope.formData.presidentThird, 3);
             }
 
             // Process games
@@ -41,18 +35,9 @@ angular.module('electionsApp')
                 var gamesNoPreference = localStorageService.get('gamesNoPreference') || 0;
                 localStorageService.set('gamesNoPreference', gamesNoPreference + 1);
             } else {
-                // Process preferences
-                firstPreferenceID = $scope.formData.gamesFirst;
-                firstPreferences = localStorageService.get(firstPreferenceID + '_' + 1) || 0;
-                localStorageService.set(firstPreferenceID + '_' + 1, firstPreferences + 1);
-
-                secondPreferenceID = $scope.formData.gamesSecond;
-                secondPreferences = localStorageService.get(secondPreferenceID + '_' + 1) || 0;
-                localStorageService.set(secondPreferenceID + '_' + 2, secondPreferences + 1);
-
-                thirdPreferenceID = $scope.formData.gamesThird;
-                thirdPreferences = localStorageService.get(thirdPreferenceID + '_' + 1) || 0;
-                localStorageService.set(thirdPreferenceID + '_' + 3, thirdPreferences + 1);
+                setPreference($scope.formData.gamesFirst, 1);
+                setPreference($scope.formData.gamesSecond, 2);
+                setPreference($scope.formData.gamesThird, 3);
             }
 
             // Process cultural
@@ -60,18 +45,9 @@ angular.module('electionsApp')
                 var culturalNoPreference = localStorageService.get('culturalNoPreference') || 0;
                 localStorageService.set('culturalNoPreference', culturalNoPreference + 1);
             } else {
-                // Process preferences
-                firstPreferenceID = $scope.formData.culturalFirst;
-                firstPreferences = localStorageService.get(firstPreferenceID + '_' + 1) || 0;
-                localStorageService.set(firstPreferenceID + '_' + 1, firstPreferences + 1);
-
-                secondPreferenceID = $scope.formData.culturalSecond;
-                secondPreferences = localStorageService.get(secondPreferenceID + '_' + 1) || 0;
-                localStorageService.set(secondPreferenceID + '_' + 2, secondPreferences + 1);
-
-                thirdPreferenceID = $scope.formData.culturalThird;
-                thirdPreferences = localStorageService.get(thirdPreferenceID + '_' + 1) || 0;
-                localStorageService.set(thirdPreferenceID + '_' + 3, thirdPreferences + 1);
+                setPreference($scope.formData.culturalFirst, 1);
+                setPreference($scope.formData.culturalSecond, 2);
+                setPreference($scope.formData.culturalThird, 3);
             }
 
             // Process science
@@ -79,18 +55,9 @@ angular.module('electionsApp')
                 var scienceNoPreference = localStorageService.get('scienceNoPreference') || 0;
                 localStorageService.set('scienceNoPreference', scienceNoPreference + 1);
             } else {
-                // Process preferences
-                firstPreferenceID = $scope.formData.scienceFirst;
-                firstPreferences = localStorageService.get(firstPreferenceID + '_' + 1) || 0;
-                localStorageService.set(firstPreferenceID + '_' + 1, firstPreferences + 1);
-
-                secondPreferenceID = $scope.formData.scienceSecond;
-                secondPreferences = localStorageService.get(secondPreferenceID + '_' + 1) || 0;
-                localStorageService.set(secondPreferenceID + '_' + 2, secondPreferences + 1);
-
-                thirdPreferenceID = $scope.formData.scienceThird;
-                thirdPreferences = localStorageService.get(thirdPreferenceID + '_' + 1) || 0;
-                localStorageService.set(thirdPreferenceID + '_' + 3, thirdPreferences + 1);
+                setPreference($scope.formData.scienceFirst, 1);
+                setPreference($scope.formData.scienceSecond, 2);
+                setPreference($scope.formData.scienceThird, 3);
             }
 
             // Process films
@@ -98,19 +65,15 @@ angular.module('electionsApp')
                 var filmsNoPreference = localStorageService.get('filmsNoPreference') || 0;
                 localStorageService.set('filmsNoPreference', filmsNoPreference + 1);
             } else {
-                // Process preferences
-                firstPreferenceID = $scope.formData.filmsFirst;
-                firstPreferences = localStorageService.get(firstPreferenceID + '_' + 1) || 0;
-                localStorageService.set(firstPreferenceID + '_' + 1, firstPreferences + 1);
-
-                secondPreferenceID = $scope.formData.filmsSecond;
-                secondPreferences = localStorageService.get(secondPreferenceID + '_' + 1) || 0;
-                localStorageService.set(secondPreferenceID + '_' + 2, secondPreferences + 1);
-
-                thirdPreferenceID = $scope.formData.filmsThird;
-                thirdPreferences = localStorageService.get(thirdPreferenceID + '_' + 1) || 0;
-                localStorageService.set(thirdPreferenceID + '_' + 3, thirdPreferences + 1);
+                setPreference($scope.formData.filmsFirst, 1);
+                setPreference($scope.formData.filmsSecond, 2);
+                setPreference($scope.formData.filmsThird, 3);
             }
+
+            // Process senator votes
+            setPreference($scope.formData.senatorFirst, 1);
+            setPreference($scope.formData.senatorSecond, 2);
+            setPreference($scope.formData.senatorThird, 3);
 
             // Open the submit modal
             $modal.open({
