@@ -30,7 +30,7 @@ angular.module('electionsApp')
         // Process the submit request
         $scope.processFilmsSubmit = function () {
             // Make sure the correct number of choices have been entered
-            if ($scope.filmsList.length >= 3) {
+            if ($scope.filmsList.length >= 4) {
                 if (!$scope.formData.filmsFirst || !$scope.formData.filmsSecond || !$scope.formData.filmsThird) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -38,7 +38,7 @@ angular.module('electionsApp')
                     });
                     return;
                 }
-            } else if ($scope.filmsList.length === 2) {
+            } else if ($scope.filmsList.length === 3) {
                 if (!$scope.formData.filmsFirst || !$scope.formData.filmsSecond) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -46,7 +46,7 @@ angular.module('electionsApp')
                     });
                     return;
                 }
-            } else if ($scope.filmsList.length === 1) {
+            } else if ($scope.filmsList.length >= 1) {
                 if (!$scope.formData.filmsFirst) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -57,7 +57,7 @@ angular.module('electionsApp')
             }
 
             // The choice of candidates must be distinct
-            if (($scope.filmsList.length > 1) &&
+            if (($scope.filmsList.length > 2) &&
                 (($scope.formData.filmsFirst === $scope.formData.filmsSecond) ||
                 ($scope.formData.filmsSecond === $scope.formData.filmsThird) ||
                 ($scope.formData.filmsThird === $scope.formData.filmsFirst))) {

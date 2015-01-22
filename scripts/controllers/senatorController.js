@@ -23,7 +23,7 @@ angular.module('electionsApp')
 
         // Process the submit request
         $scope.processSenatorSubmit = function () {
-            if ($scope.senatorList.length >= 3) {
+            if ($scope.senatorList.length >= 4) {
                 if (!$scope.formData.senatorFirst || !$scope.formData.senatorSecond || !$scope.formData.senatorThird) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -31,7 +31,7 @@ angular.module('electionsApp')
                     });
                     return;
                 }
-            } else if ($scope.senatorList.length === 2) {
+            } else if ($scope.senatorList.length === 3) {
                 if (!$scope.formData.senatorFirst || !$scope.formData.senatorSecond) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -39,7 +39,7 @@ angular.module('electionsApp')
                     });
                     return;
                 }
-            } else if ($scope.senatorList.length === 1) {
+            } else if ($scope.senatorList.length >= 1 ) {
                 if (!$scope.formData.senatorFirst) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -50,7 +50,7 @@ angular.module('electionsApp')
             }
 
             // The choice of candidates must be distinct
-            if (($scope.senatorList.length > 1) &&
+            if (($scope.senatorList.length > 2) &&
                 (($scope.formData.senatorFirst === $scope.formData.senatorSecond) ||
                  ($scope.formData.senatorSecond === $scope.formData.senatorThird) ||
                  ($scope.formData.senatorThird === $scope.formData.senatorFirst))) {

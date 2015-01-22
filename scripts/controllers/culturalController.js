@@ -30,7 +30,7 @@ angular.module('electionsApp')
         // Process the submit request
         $scope.processCulturalSubmit = function () {
             // Make sure the correct number of choices have been entered
-            if ($scope.culturalList.length >= 3) {
+            if ($scope.culturalList.length >= 4) {
                 if (!$scope.formData.culturalFirst || !$scope.formData.culturalSecond || !$scope.formData.culturalThird) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -38,7 +38,7 @@ angular.module('electionsApp')
                     });
                     return;
                 }
-            } else if ($scope.culturalList.length === 2) {
+            } else if ($scope.culturalList.length === 3) {
                 if (!$scope.formData.culturalFirst || !$scope.formData.culturalSecond) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -46,7 +46,7 @@ angular.module('electionsApp')
                     });
                     return;
                 }
-            } else if ($scope.culturalList.length === 1) {
+            } else if ($scope.culturalList.length >= 1) {
                 if (!$scope.formData.culturalFirst) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -57,7 +57,7 @@ angular.module('electionsApp')
             }
 
             // The choice of candidates must be distinct
-            if (($scope.culturalList.length > 1) &&
+            if (($scope.culturalList.length > 2) &&
                 (($scope.formData.culturalFirst === $scope.formData.culturalSecond) ||
                 ($scope.formData.culturalSecond === $scope.formData.culturalThird) ||
                 ($scope.formData.culturalThird === $scope.formData.culturalFirst))) {

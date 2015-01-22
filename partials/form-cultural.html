@@ -8,11 +8,11 @@
                     <input type="radio" name="candidate-first" ng-model="formData.culturalFirst" value="{{candidate.id}}">
                     1st Preference
                 </p>
-                <p ng-show="culturalList.length >=2">
+                <p ng-show="culturalList.length > 2">
                     <input type="radio" name="candidate-second" ng-model="formData.culturalSecond" value="{{candidate.id}}">
                     2nd Preference
                 </p>
-                <p ng-show="culturalList.length >= 3">
+                <p ng-show="culturalList.length > 3">
                     <input type="radio" name="candidate-third" ng-model="formData.culturalThird" value="{{candidate.id}}">
                     3rd Preference
                 </p>

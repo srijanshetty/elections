@@ -30,7 +30,7 @@ angular.module('electionsApp')
         // Process the submit request
         $scope.processScienceSubmit = function () {
             // Make sure the correct number of choices have been entered
-            if ($scope.scienceList.length >= 3) {
+            if ($scope.scienceList.length >= 4) {
                 if (!$scope.formData.scienceFirst || !$scope.formData.scienceSecond || !$scope.formData.scienceThird) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -38,7 +38,7 @@ angular.module('electionsApp')
                     });
                     return;
                 }
-            } else if ($scope.scienceList.length === 2) {
+            } else if ($scope.scienceList.length === 3) {
                 if (!$scope.formData.scienceFirst || !$scope.formData.scienceSecond) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -46,7 +46,7 @@ angular.module('electionsApp')
                     });
                     return;
                 }
-            } else if ($scope.scienceList.length === 1) {
+            } else if ($scope.scienceList.length >= 1) {
                 if (!$scope.formData.scienceFirst) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -57,7 +57,7 @@ angular.module('electionsApp')
             }
 
             // The choice of candidates must be distinct
-            if (($scope.scienceList.length > 1) &&
+            if (($scope.scienceList.length > 2) &&
                 (($scope.formData.scienceFirst === $scope.formData.scienceSecond) ||
                 ($scope.formData.scienceSecond === $scope.formData.scienceThird) ||
                 ($scope.formData.scienceThird === $scope.formData.scienceFirst))) {

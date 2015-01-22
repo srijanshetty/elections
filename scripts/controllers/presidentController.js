@@ -30,7 +30,7 @@ angular.module('electionsApp')
         // Process the submit request
         $scope.processPresidentSubmit = function () {
             // Make sure the correct number of choices have been entered
-            if ($scope.presidentList.length >= 3) {
+            if ($scope.presidentList.length >= 4) {
                 if (!$scope.formData.presidentFirst || !$scope.formData.presidentSecond || !$scope.formData.presidentThird) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -38,7 +38,7 @@ angular.module('electionsApp')
                     });
                     return;
                 }
-            } else if ($scope.presidentList.length === 2) {
+            } else if ($scope.presidentList.length === 3) {
                 if (!$scope.formData.presidentFirst || !$scope.formData.presidentSecond) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -46,7 +46,7 @@ angular.module('electionsApp')
                     });
                     return;
                 }
-            } else if ($scope.presidentList.length === 1) {
+            } else if ($scope.presidentList.length >= 1) {
                 if (!$scope.formData.presidentFirst) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -57,7 +57,7 @@ angular.module('electionsApp')
             }
 
             // The choice of candidates must be distinct
-            if (($scope.presidentList.length > 1) &&
+            if (($scope.presidentList.length > 2) &&
                 (($scope.formData.presidentFirst === $scope.formData.presidentSecond) ||
                 ($scope.formData.presidentSecond === $scope.formData.presidentThird) ||
                 ($scope.formData.presidentThird === $scope.formData.presidentFirst))) {

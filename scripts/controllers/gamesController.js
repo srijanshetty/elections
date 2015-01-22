@@ -30,7 +30,7 @@ angular.module('electionsApp')
         // Process the submit request
         $scope.processGamesSubmit = function () {
             // Make sure the correct number of choices have been entered
-            if ($scope.gamesList.length >= 3) {
+            if ($scope.gamesList.length >= 4) {
                 if (!$scope.formData.gamesFirst || !$scope.formData.gamesSecond || !$scope.formData.gamesThird) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -38,7 +38,7 @@ angular.module('electionsApp')
                     });
                     return;
                 }
-            } else if ($scope.gamesList.length === 2) {
+            } else if ($scope.gamesList.length === 3) {
                 if (!$scope.formData.gamesFirst || !$scope.formData.gamesSecond) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -46,7 +46,7 @@ angular.module('electionsApp')
                     });
                     return;
                 }
-            } else if ($scope.gamesList.length === 1) {
+            } else if ($scope.gamesList.length >= 1) {
                 if (!$scope.formData.gamesFirst) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -57,7 +57,7 @@ angular.module('electionsApp')
             }
 
             // The choice of candidates must be distinct
-            if (($scope.gamesList.length > 1) &&
+            if (($scope.gamesList.length > 2) &&
                 (($scope.formData.gamesFirst === $scope.formData.gamesSecond) ||
                 ($scope.formData.gamesSecond === $scope.formData.gamesThird) ||
                 ($scope.formData.gamesThird === $scope.formData.gamesFirst))) {
