@@ -74,7 +74,7 @@ body
 }
 
 .candidates-container {
-    margin-bottom: 180px;
+    margin-bottom: 120px;
 }
 
 .candidate-cell {
@@ -99,6 +99,6 @@ body
 }
 
 .candidate-image {
-    height: 242px;
+    height: 192px;
     width: 192px;
 }
