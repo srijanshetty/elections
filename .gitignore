@@ -22,3 +22,8 @@ lib/
 
 ### Node-webkit
 app.nw
+
+assets/*
+!assets/candidate.jpg
+!assets/vote.jpg
+!assets/logo.png
