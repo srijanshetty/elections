@@ -1,19 +1,19 @@
 angular.module('electionsApp')
     .controller('culturalController', function culturalController($state, $scope, localStorageService, dataFactory, $modal) {
         // Make a list of senators available to the view
-        $scope.culturalList = dataFactory.getCandidates($state.current.stateName);
+        $scope.candidateList = dataFactory.getCandidates($state.current.stateName);
 
         // Setup the way the candidates will be displayed
-        if ($scope.culturalList.length >= 3) {
+        if ($scope.candidateList.length >= 3) {
             $scope.candidateClass = 'col-sm-4';
-        } else if ($scope.culturalList.length === 2) {
+        } else if ($scope.candidateList.length === 2) {
             $scope.candidateClass = 'col-sm-6';
         } else {
             $scope.candidateClass = 'col-sm-12';
         }
 
         // Skip this step if there are no items in the list
-        if ( !$scope.culturalList || $scope.culturalList.length === 0) {
+        if ( !$scope.candidateList || $scope.candidateList.length === 0) {
             localStorageService.set('nextState', 'science');
             $state.go('form.science');
         }
@@ -30,7 +30,7 @@ angular.module('electionsApp')
         // Process the submit request
         $scope.processCulturalSubmit = function () {
             // Make sure the correct number of choices have been entered
-            if ($scope.culturalList.length >= 4) {
+            if ($scope.candidateList.length >= 4) {
                 if (!$scope.formData.culturalFirst || !$scope.formData.culturalSecond || !$scope.formData.culturalThird) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -38,7 +38,7 @@ angular.module('electionsApp')
                     });
                     return;
                 }
-            } else if ($scope.culturalList.length === 3) {
+            } else if ($scope.candidateList.length === 3) {
                 if (!$scope.formData.culturalFirst || !$scope.formData.culturalSecond) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -46,7 +46,7 @@ angular.module('electionsApp')
                     });
                     return;
                 }
-            } else if ($scope.culturalList.length >= 1) {
+            } else if ($scope.candidateList.length >= 1) {
                 if (!$scope.formData.culturalFirst) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -57,7 +57,7 @@ angular.module('electionsApp')
             }
 
             // The choice of candidates must be distinct
-            if (($scope.culturalList.length > 2) &&
+            if (($scope.candidateList.length > 2) &&
                 (($scope.formData.culturalFirst === $scope.formData.culturalSecond) ||
                 ($scope.formData.culturalSecond === $scope.formData.culturalThird) ||
                 ($scope.formData.culturalThird === $scope.formData.culturalFirst))) {

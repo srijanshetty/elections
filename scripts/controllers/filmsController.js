@@ -1,19 +1,19 @@
 angular.module('electionsApp')
     .controller('filmsController', function filmsController($state, $scope, localStorageService, dataFactory, $modal) {
         // Make a list of senators available to the view
-        $scope.filmsList = dataFactory.getCandidates($state.current.stateName);
+        $scope.candidateList = dataFactory.getCandidates($state.current.stateName);
 
         // Setup the way the candidates will be displayed
-        if ($scope.filmsList.length >= 3) {
+        if ($scope.candidateList.length >= 3) {
             $scope.candidateClass = 'col-sm-4';
-        } else if ($scope.filmsList.length === 2) {
+        } else if ($scope.candidateList.length === 2) {
             $scope.candidateClass = 'col-sm-6';
         } else {
             $scope.candidateClass = 'col-sm-12';
         }
 
         // Skip this step if there are no items in the list
-        if ( !$scope.filmsList || $scope.filmsList.length === 0) {
+        if ( !$scope.candidateList || $scope.candidateList.length === 0) {
             localStorageService.set('nextState', 'submit');
             $state.go('form.submit');
         }
@@ -28,9 +28,9 @@ angular.module('electionsApp')
         };
 
         // Process the submit request
-        $scope.processFilmsSubmit = function () {
+        $scope.processSubmit = function () {
             // Make sure the correct number of choices have been entered
-            if ($scope.filmsList.length >= 4) {
+            if ($scope.candidateList.length >= 4) {
                 if (!$scope.formData.filmsFirst || !$scope.formData.filmsSecond || !$scope.formData.filmsThird) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -38,7 +38,7 @@ angular.module('electionsApp')
                     });
                     return;
                 }
-            } else if ($scope.filmsList.length === 3) {
+            } else if ($scope.candidateList.length === 3) {
                 if (!$scope.formData.filmsFirst || !$scope.formData.filmsSecond) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -46,7 +46,7 @@ angular.module('electionsApp')
                     });
                     return;
                 }
-            } else if ($scope.filmsList.length >= 1) {
+            } else if ($scope.candidateList.length >= 1) {
                 if (!$scope.formData.filmsFirst) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
@@ -57,7 +57,7 @@ angular.module('electionsApp')
             }
 
             // The choice of candidates must be distinct
-            if (($scope.filmsList.length > 2) &&
+            if (($scope.candidateList.length > 2) &&
                 (($scope.formData.filmsFirst === $scope.formData.filmsSecond) ||
                 ($scope.formData.filmsSecond === $scope.formData.filmsThird) ||
                 ($scope.formData.filmsThird === $scope.formData.filmsFirst))) {
