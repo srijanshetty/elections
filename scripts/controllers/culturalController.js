@@ -28,7 +28,7 @@ angular.module('electionsApp')
         };
 
         // Process the submit request
-        $scope.processCulturalSubmit = function () {
+        $scope.processSubmit = function () {
             // Make sure the correct number of choices have been entered
             if ($scope.candidateList.length >= 4) {
                 if (!$scope.formData.culturalFirst || !$scope.formData.culturalSecond || !$scope.formData.culturalThird) {
