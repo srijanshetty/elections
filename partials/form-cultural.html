@@ -2,7 +2,7 @@
     <div class="row">
         <div class="candidate-cell text-center" ng-repeat="candidate in candidateList" ng-class="candidateClass">
             <img class="candidate-image" src="{{candidate.image}}">
-            <p>{{candidate.name}}</p>
+            <h3>{{candidate.name}}</h3>
             <div>
                 <p>
                     <input type="radio" name="candidate-first" ng-model="formData.culturalFirst" value="{{candidate.id}}">

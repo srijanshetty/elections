@@ -34,7 +34,8 @@ angular.module('electionsApp')
                 { 'id': 15, 'name': 'Samyak Jain', 'image': 'assets/Samyak.jpg' },
                 { 'id': 16, 'name': 'Sparsh', 'image': 'assets/Sparsh.jpg' },
                 { 'id': 17, 'name': 'Vedant Goenka', 'image': 'assets/Vedant.jpg' }
-            ]
+            ],
+            'Other': [],
         };
 
         // total Number of states

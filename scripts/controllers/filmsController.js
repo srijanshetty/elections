@@ -5,7 +5,7 @@ angular.module('electionsApp')
 
         // Setup the way the candidates will be displayed
         if ($scope.candidateList.length >= 3) {
-            $scope.candidateClass = 'col-sm-4';
+            $scope.candidateClass = 'col-sm-3';
         } else if ($scope.candidateList.length === 2) {
             $scope.candidateClass = 'col-sm-6';
         } else {
