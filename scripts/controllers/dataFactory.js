@@ -35,7 +35,7 @@ angular.module('electionsApp')
                 { 'id': 16, 'name': 'Sparsh', 'image': 'assets/Sparsh.jpg' },
                 { 'id': 17, 'name': 'Vedant Goenka', 'image': 'assets/Vedant.jpg' }
             ],
-            'Other': [],
+            'OTHERS': [],
         };
 
         // total Number of states
