@@ -69,6 +69,9 @@ angular.module('electionsApp')
                 return;
             }
 
+            // Clear no preference
+            $scope.formData.presidentNoPreference = false;
+
             // Set the next state
             localStorageService.set('nextState', 'games');
 

@@ -69,6 +69,9 @@ angular.module('electionsApp')
                 return;
             }
 
+            // Clear no preference
+            $scope.formData.filmsNoPreference = false;
+
             // Set the next state
             localStorageService.set('nextState', 'submit');
 
