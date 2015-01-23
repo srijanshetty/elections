@@ -81,6 +81,7 @@ angular.module('electionsApp')
         vm.ok = function () {
             if (vm.selected.cancelPassword === dataFactory.settings.cancelPassword) {
                 $modalInstance.close(true);
+                document.getElementById('during-vote').pause();
             } else {
                 $modalInstance.close(false);
             }
