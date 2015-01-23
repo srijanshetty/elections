@@ -1,12 +1,11 @@
 angular.module('electionsApp')
-    .controller('submitController', function submitController($state, $scope, localStorageService, $modal) {
+    .controller('submitController', function submitController($state, $scope, localStorageService) {
         function setPreference(preferenceID, preference) {
             if (preferenceID) {
                 var preferences = localStorageService.get(preferenceID + '_' + preference) || 0;
                 localStorageService.set(preferenceID + '_' + preference, preferences + 1);
             }
         }
-
         // Process the submit request
         $scope.processSubmitSubmit = function () {
             // Clean up
@@ -75,22 +74,13 @@ angular.module('electionsApp')
             setPreference($scope.formData.senatorSecond, 2);
             setPreference($scope.formData.senatorThird, 3);
 
-            // Open the submit modal
-            $modal.open({
-                templateUrl: 'partials/errorModal.html',
-                controller: 'successSubmitController'
-            });
-        };
-    })
-    .controller('successSubmitController', function successSubmitController($state, $modalInstance, $scope) {
-        $scope.error = {};
-        $scope.error.name = 'Success';
-        $scope.error.msg = 'Your vote has been successfully entered into the system';
-        $scope.error.button = 'done';
+            // Stop during vote audio
+            document.getElementById('during-vote').pause();
 
-        // Dismiss the modal
-        $scope.dismiss = function () {
-            $modalInstance.dismiss('cancel');
+            // Play audio at the end of vote
+            document.getElementById('end-of-vote').play();
+
+            // Move to login
             $state.go('login');
         };
     });
