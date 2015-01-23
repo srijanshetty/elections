@@ -74,9 +74,6 @@ angular.module('electionsApp')
             setPreference($scope.formData.senatorSecond, 2);
             setPreference($scope.formData.senatorThird, 3);
 
-            // Stop during vote audio
-            document.getElementById('during-vote').pause();
-
             // Play audio at the end of vote
             document.getElementById('end-of-vote').play();
 

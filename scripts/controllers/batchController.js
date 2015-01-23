@@ -1,8 +1,5 @@
 angular.module('electionsApp')
     .controller('batchController', function batchController($state, $scope, localStorageService, $modal) {
-        // Start the bleeping
-        document.getElementById('during-vote').play();
-
         // Process the submit request
         $scope.processBatchSubmit = function () {
             // Check the validation of the form

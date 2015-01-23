@@ -71,7 +71,7 @@ angular.module('electionsApp')
         };
     });
 
-    angular.module('electionsApp')
+angular.module('electionsApp')
     .controller('closeModalController', function ($scope, $modalInstance, dataFactory) {
         var vm = $scope;
 
@@ -81,7 +81,6 @@ angular.module('electionsApp')
         vm.ok = function () {
             if (vm.selected.cancelPassword === dataFactory.settings.cancelPassword) {
                 $modalInstance.close(true);
-                document.getElementById('during-vote').pause();
             } else {
                 $modalInstance.close(false);
             }

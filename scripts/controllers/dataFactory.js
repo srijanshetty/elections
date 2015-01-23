@@ -58,9 +58,9 @@ angular.module('electionsApp')
 
         // Settings for the application
         exports.settings = {
-            'mainPassword': 'srijan',
-            'cancelPassword': 'cancel',
-            'adminPassword': 'admin'
+            'mainPassword': 'LetsVote',
+            'cancelPassword': 'CancelThisVote',
+            'adminPassword': 'IAmGod'
         };
 
         return exports;
