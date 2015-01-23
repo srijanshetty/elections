@@ -18,12 +18,6 @@ angular.module('electionsApp')
             return localStorageService.get(id + '_' + preference) || 0;
         };
 
-        // Process Submit
-        $scope.clearVoteCount = function() {
-            // Set vote count to zero
-            localStorageService.set('voteCount', 0);
-        };
-
         // Close admin panel
         $scope.close = function () {
             // Redirect to login state
