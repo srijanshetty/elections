@@ -1,6 +1,6 @@
 <form ng-submit="processSubmit()">
     <div class="row">
-        <div class="candidate-cell text-center" ng-repeat="candidate in candidateList | shuffle" ng-class="candidateClass">
+        <div class="candidate-cell text-center" ng-repeat="candidate in candidateList" ng-class="candidateClass">
             <img class="candidate-image" src="{{candidate.image}}">
             <h3>{{candidate.name}}</h3>
             <div>

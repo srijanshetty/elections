@@ -2,6 +2,7 @@ angular.module('electionsApp')
     .controller('senatorController', function senatorContoller($state, $scope, dataFactory, localStorageService, $modal) {
         // Make a list of senators available to the view
         $scope.candidateList = dataFactory.getSenators($scope.formData.batch);
+        $scope.candidateList.shuffle();
 
         // Setup the way the candidates will be displayed
         if ($scope.candidateList.length >= 3) {
@@ -53,7 +54,7 @@ angular.module('electionsApp')
             if (($scope.candidateList.length > 2) &&
                 (($scope.formData.senatorFirst === $scope.formData.senatorSecond) ||
                  ($scope.formData.senatorSecond === $scope.formData.senatorThird) ||
-                 ($scope.formData.senatorThird === $scope.formData.senatorFirst))) {
+                     ($scope.formData.senatorThird === $scope.formData.senatorFirst))) {
                 $modal.open({
                     templateUrl: 'partials/errorModal.html',
                     controller: 'choiceErrorController'

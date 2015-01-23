@@ -1,3 +1,18 @@
+// Sort array
+Array.prototype.shuffle = function (){
+    var i = this.length, j, temp;
+    if ( i === 0 ) {
+        return;
+    }
+
+    while ( --i ) {
+        j = Math.floor( Math.random() * ( i + 1 ) );
+        temp = this[i];
+        this[i] = this[j];
+        this[j] = temp;
+    }
+};
+
 // Function to check login
 function checkLogin($state, localStorageService) {
     var isLoggedIn = localStorageService.get('isLoggedIn');
@@ -99,19 +114,3 @@ angular.module('electionsApp')
         onEnter: checkLogin
     });
 });
-
-angular.module('electionsApp')
-    .filter('shuffle', function() {
-        var shuffledArr = [],
-            shuffledLength = 0;
-        return function(arr) {
-            var o = arr.slice(0, arr.length);
-            if (shuffledLength === arr.length) {
-                return shuffledArr;
-            }
-            for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-            shuffledArr = o;
-            shuffledLength = o.length;
-            return o;
-        };
-    });
