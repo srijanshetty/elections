@@ -4,7 +4,8 @@
   "description": "Voting system for IITK General Elections",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "nwbuild -p 'win64,linux64' -o build ."
   },
   "keywords": [
     "IITK",
@@ -12,21 +13,24 @@
     "voting"
   ],
   "window": {
-      "toolbar": false,
-      "width": 1366,
-      "height": 968,
-      "min_width": 1024,
-      "min_height": 600,
-      "max_width": 1366,
-      "max_height": 968,
-      "position": "mouse",
-      "fullscreen": true
+    "toolbar": false,
+    "width": 1366,
+    "height": 968,
+    "min_width": 1024,
+    "min_height": 600,
+    "max_width": 1366,
+    "max_height": 968,
+    "position": "mouse",
+    "fullscreen": true
   },
   "webkit": {
-      "plugin": false,
-      "java" : false,
-      "page-cache" : false
+    "plugin": false,
+    "java": false,
+    "page-cache": false
   },
   "author": "Srijan R Shetty <srijan.shetty+code@gmail.com> (http://srijanshetty.in/)",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "node-webkit-builder": "^1.0.7"
+  }
 }
