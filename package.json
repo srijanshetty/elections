@@ -4,7 +4,7 @@
   "description": "Voting system for IITK General Elections",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nwbuild -r . -v 0.11.5",
     "build": "nwbuild -p 'win64,linux64' -o build ."
   },
   "keywords": [
