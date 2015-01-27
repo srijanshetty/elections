@@ -7,10 +7,22 @@ About
 For the lack of a fancy name, I shall call this Voting System VS-3. (3 for no apparent reason).
 VS-3 is a simple nw.js based offline voting system.
 
-Information
------------
+Configuration
+-------------
 
-- Add information about the senators in *scripts/controllers/dataFactory.js*.
+- The application can be configured by modifying *scripts/main.js*.
+
+Installation
+------------
+
+- Run the following command to build binaries for win64 and linux64 in the *build/* directory.
+
+```shell
+$ npm install
+$ npm run build
+```
+
+- Use the corresponding binaries in *build/iitk-general-elections*.
 
 Testing
 -------
@@ -18,27 +30,6 @@ Testing
 ```shell
 $ npm test
 ```
-
-Installation
-------------
-
-- Run the following command to build the executable in the *build/* directory.
-
-```shell
-$ npm run build
-```
-
-- Use the binaries in build/iitk-general-elections.
-
-Features
---------
-
-- Randomized order of senators.
-- A final beep at the end of voting.
-- Votes are only cast at the end of voting.
-- Cancel a vote in between.
-- Simple configuration for candidates.
-- Cross-platform.
 
 LICENSE
 -------
