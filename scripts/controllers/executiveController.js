@@ -10,7 +10,11 @@ angular.module('electionsApp')
         $scope.candidateList.shuffle();
 
         // Create the selectionData object
-        $scope.selectionData = {};
+        $scope.selectionData = {
+            'postFirst': '',
+            'postSecond': '',
+            'postThird': ''
+        };
 
         // Setup the way the candidates will be displayed
         if ($scope.candidateList.length >= 3) {

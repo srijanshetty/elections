@@ -3,36 +3,7 @@ angular.module('electionsApp')
         var vm = $scope;
 
         // To store formData
-        vm.formData = {
-            'batch': '',
-            'senatorFirst': '',
-            'senatorSecond': '',
-            'senatorThird': '',
-            'presidentFirst': '',
-            'presidentSecond': '',
-            'presidentThird': '',
-            'presidentNoPreference': false,
-            'culturalFirst': '',
-            'culturalSecond': '',
-            'culturalThird': '',
-            'culturalNoPreference': false,
-            'sportsFirst': '',
-            'sportsSecond': '',
-            'sportsThird': '',
-            'sportsNoPreference': false,
-            'gamesFirst': '',
-            'gamesSecond': '',
-            'gamesThird': '',
-            'gamesNoPreference': false,
-            'scienceFirst': '',
-            'scienceSecond': '',
-            'scienceThird': '',
-            'scienceNoPreference': false,
-            'filmsFirst': '',
-            'filmsSecond': '',
-            'filmsThird': '',
-            'filmsNoPreference':false
-        };
+        vm.formData = { };
 
         // For the breadcrumb navigation
         vm.totalStates = dataFactory.totalStates;
