@@ -1,8 +1,16 @@
 angular.module('electionsApp')
-    .controller('filmsController', function filmsController($state, $scope, localStorageService, dataFactory, $modal) {
+    .controller('executiveController', function presidentContoller($state, $scope, localStorageService, dataFactory, $modal) {
+
+        // Get state information
+        var nextState = $state.current.nextState;
+        var currentState = $state.current.stateName;
+
         // Make a list of senators available to the view
-        $scope.candidateList = dataFactory.getCandidates($state.current.stateName);
+        $scope.candidateList = dataFactory.getCandidates(currentState);
         $scope.candidateList.shuffle();
+
+        // Create the selectionData object
+        $scope.selectionData = {};
 
         // Setup the way the candidates will be displayed
         if ($scope.candidateList.length >= 3) {
@@ -15,24 +23,29 @@ angular.module('electionsApp')
 
         // Skip this step if there are no items in the list
         if ( !$scope.candidateList || $scope.candidateList.length === 0) {
-            localStorageService.set('nextState', 'submit');
-            $state.go('form.submit');
+            localStorageService.set('nextState', nextState);
+            $state.go('form.' + nextState);
         }
 
         // Process no preference
         $scope.processNoPreference = function () {
-            $scope.formData.filmsNoPreference = true;
+            $scope.formData[currentState + 'NoPreference'] = true;
 
-            // Jump to next state
-            localStorageService.set('nextState', 'submit');
-            $state.go('form.submit');
+            // Clear others
+            $scope.formData[currentState + 'First'] = '';
+            $scope.formData[currentState + 'Second'] = '';
+            $scope.formData[currentState + 'Third'] = '';
+
+            // Set the next state
+            localStorageService.set('nextState', nextState);
+            $state.go('form.' + nextState);
         };
 
         // Process the submit request
         $scope.processSubmit = function () {
             // Make sure the correct number of choices have been entered
             if ($scope.candidateList.length >= 4) {
-                if (!$scope.formData.filmsFirst || !$scope.formData.filmsSecond || !$scope.formData.filmsThird) {
+                if (!$scope.selectionData.postFirst || !$scope.selectionData.postSecond || !$scope.selectionData.postThird) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
                         controller: 'threePreferencesErrorController'
@@ -40,7 +53,7 @@ angular.module('electionsApp')
                     return;
                 }
             } else if ($scope.candidateList.length === 3) {
-                if (!$scope.formData.filmsFirst || !$scope.formData.filmsSecond) {
+                if (!$scope.selectionData.postFirst || !$scope.selectionData.postSecond) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
                         controller: 'twoPreferencesErrorController'
@@ -48,7 +61,7 @@ angular.module('electionsApp')
                     return;
                 }
             } else if ($scope.candidateList.length >= 1) {
-                if (!$scope.formData.filmsFirst) {
+                if (!$scope.selectionData.postFirst) {
                     $modal.open({
                         templateUrl: 'partials/errorModal.html',
                         controller: 'onePreferenceErrorController'
@@ -59,9 +72,9 @@ angular.module('electionsApp')
 
             // The choice of candidates must be distinct
             if (($scope.candidateList.length > 2) &&
-                (($scope.formData.filmsFirst === $scope.formData.filmsSecond) ||
-                ($scope.formData.filmsSecond === $scope.formData.filmsThird) ||
-                ($scope.formData.filmsThird === $scope.formData.filmsFirst))) {
+                (($scope.selectionData.postFirst === $scope.selectionData.postSecond) ||
+                ($scope.selectionData.postSecond === $scope.selectionData.postThird) ||
+                ($scope.selectionData.postThird === $scope.selectionData.postFirst))) {
                 $modal.open({
                     templateUrl: 'partials/errorModal.html',
                     controller: 'choiceErrorController'
@@ -70,12 +83,15 @@ angular.module('electionsApp')
             }
 
             // Clear no preference
-            $scope.formData.filmsNoPreference = false;
+            $scope.formData[currentState + 'NoPreference'] = false;
+
+            // Pass on the preferences
+            $scope.formData[currentState + 'First'] = $scope.selectionData.postFirst;
+            $scope.formData[currentState + 'Second'] = $scope.selectionData.postSecond;
+            $scope.formData[currentState + 'Third'] = $scope.selectionData.postThird;
 
             // Set the next state
-            localStorageService.set('nextState', 'submit');
-
-            // Redirect to president
-            $state.go('form.submit');
+            localStorageService.set('nextState', nextState);
+            $state.go('form.' + nextState);
         };
     });

@@ -67,49 +67,54 @@ angular.module('electionsApp')
     })
     .state('form.president', {
         url: '/president',
-        templateUrl: 'partials/form-president.html',
-        stateName: 'president',
+        templateUrl: 'partials/form-executive.html',
+        controller: 'executiveController',
         stateCode: 3,
-        controller: 'presidentController',
+        stateName: 'president',
+        nextState: 'games',
         onEnter: checkLogin
     })
     .state('form.games', {
         url: '/games',
-        templateUrl: 'partials/form-games.html',
-        stateName: 'games',
+        templateUrl: 'partials/form-executive.html',
+        controller: 'executiveController',
         stateCode: 4,
-        controller: 'gamesController',
+        stateName: 'games',
+        nextState: 'cultural',
         onEnter: checkLogin
     })
     .state('form.cultural', {
         url: '/cultural',
-        templateUrl: 'partials/form-cultural.html',
-        stateName: 'cultural',
+        templateUrl: 'partials/form-executive.html',
+        controller: 'executiveController',
         stateCode: 5,
-        controller: 'culturalController',
+        stateName: 'cultural',
+        nextState: 'science',
         onEnter: checkLogin
     })
     .state('form.science', {
         url: '/science',
-        templateUrl: 'partials/form-science.html',
-        stateName: 'science',
+        templateUrl: 'partials/form-executive.html',
+        controller: 'executiveController',
         stateCode: 6,
-        controller: 'scienceController',
+        stateName: 'science',
+        nextState: 'films',
         onEnter: checkLogin
     })
     .state('form.films', {
         url: '/films',
-        templateUrl: 'partials/form-films.html',
-        stateName: 'films',
+        templateUrl: 'partials/form-executive.html',
+        controller: 'executiveController',
         stateCode: 7,
-        controller: 'filmsController',
+        stateName: 'films',
+        nextState: 'submit',
         onEnter: checkLogin
     })
     .state('form.submit', {
         url: '/submit',
         templateUrl: 'partials/form-submit.html',
-        stateName: 'submit',
         stateCode: 8,
+        stateName: 'submit',
         controller: 'submitController',
         onEnter: checkLogin
     });

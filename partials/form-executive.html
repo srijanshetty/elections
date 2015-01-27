@@ -5,15 +5,15 @@
             <h3>{{candidate.name}}</h3>
             <div>
                 <p>
-                    <input type="radio" name="candidate-first" ng-model="formData.scienceFirst" value="{{candidate.id}}">
+                    <input type="radio" name="candidate-first" ng-model="selectionData.postFirst" value="{{candidate.id}}">
                     1st Preference
                 </p>
                 <p ng-show="candidateList.length > 2">
-                    <input type="radio" name="candidate-second" ng-model="formData.scienceSecond" value="{{candidate.id}}">
+                    <input type="radio" name="candidate-second" ng-model="selectionData.postSecond" value="{{candidate.id}}">
                     2nd Preference
                 </p>
                 <p ng-show="candidateList.length > 3">
-                    <input type="radio" name="candidate-third" ng-model="formData.scienceThird" value="{{candidate.id}}">
+                    <input type="radio" name="candidate-third" ng-model="selectionData.postThird" value="{{candidate.id}}">
                     3rd Preference
                 </p>
             </div>
