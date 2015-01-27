@@ -24,6 +24,10 @@ function checkLogin($state, localStorageService) {
     }
 }
 
+// Store the stateIndex
+// TODO: remove this global
+var stateIndex = 0;
+
 // Setup the app
 angular.module('electionsApp', ['ui.router', 'LocalStorageModule', 'ui.bootstrap']);
 
@@ -53,7 +57,7 @@ angular.module('electionsApp')
         url: '/batch',
         templateUrl: 'partials/form-batch.html',
         stateName: 'Info',
-        stateCode: 1,
+        stateCode: ++stateIndex,
         controller: 'batchController',
         onEnter: checkLogin
     })
@@ -61,7 +65,7 @@ angular.module('electionsApp')
         url: '/senator',
         templateUrl: 'partials/form-senator.html',
         stateName: 'senator',
-        stateCode: 2,
+        stateCode: ++stateIndex,
         controller: 'senatorController',
         onEnter: checkLogin
     })
@@ -69,7 +73,7 @@ angular.module('electionsApp')
         url: '/president',
         templateUrl: 'partials/form-executive.html',
         controller: 'executiveController',
-        stateCode: 3,
+        stateCode: ++stateIndex,
         stateName: 'president',
         nextState: 'games',
         onEnter: checkLogin
@@ -78,7 +82,7 @@ angular.module('electionsApp')
         url: '/games',
         templateUrl: 'partials/form-executive.html',
         controller: 'executiveController',
-        stateCode: 4,
+        stateCode: ++stateIndex,
         stateName: 'games',
         nextState: 'cultural',
         onEnter: checkLogin
@@ -87,7 +91,7 @@ angular.module('electionsApp')
         url: '/cultural',
         templateUrl: 'partials/form-executive.html',
         controller: 'executiveController',
-        stateCode: 5,
+        stateCode: ++stateIndex,
         stateName: 'cultural',
         nextState: 'science',
         onEnter: checkLogin
@@ -96,7 +100,7 @@ angular.module('electionsApp')
         url: '/science',
         templateUrl: 'partials/form-executive.html',
         controller: 'executiveController',
-        stateCode: 6,
+        stateCode: ++stateIndex,
         stateName: 'science',
         nextState: 'films',
         onEnter: checkLogin
@@ -105,7 +109,7 @@ angular.module('electionsApp')
         url: '/films',
         templateUrl: 'partials/form-executive.html',
         controller: 'executiveController',
-        stateCode: 7,
+        stateCode: ++stateIndex,
         stateName: 'films',
         nextState: 'submit',
         onEnter: checkLogin
@@ -113,7 +117,7 @@ angular.module('electionsApp')
     .state('form.submit', {
         url: '/submit',
         templateUrl: 'partials/form-submit.html',
-        stateCode: 8,
+        stateCode: ++stateIndex,
         stateName: 'submit',
         controller: 'submitController',
         onEnter: checkLogin
@@ -160,8 +164,15 @@ angular.module('electionsApp')
             'OTHERS': [],
         };
 
+        // Settings for the application
+        exports.settings = {
+            'mainPassword': 'LetsVote',
+            'cancelPassword': 'CancelThisVote',
+            'adminPassword': 'IAmGod'
+        };
+
         // total Number of states
-        exports.totalStates = 8;
+        exports.totalStates = stateIndex;
 
         // All possible batches
         exports.batches = Object.keys(exports.senators);
@@ -176,13 +187,6 @@ angular.module('electionsApp')
             return exports.gensecs.filter(function (value) {
                 return (value.position === key);
             });
-        };
-
-        // Settings for the application
-        exports.settings = {
-            'mainPassword': 'LetsVote',
-            'cancelPassword': 'CancelThisVote',
-            'adminPassword': 'IAmGod'
         };
 
         return exports;
