@@ -15,10 +15,17 @@ Configuration
 Installation
 ------------
 
-- Run the following command to build binaries for win64 and linux64 in the *build/* directory.
+- Install dependencies.
 
 ```shell
 $ npm install
+```
+
+- Replace the first line in *./lib/bootswatch-dist/css/bootstrap.min.js* with a comment.
+
+- Run the following command to build binaries for win64 and linux64 in the *build/* directory.
+
+```shell
 $ npm run build
 ```
 
