@@ -13,6 +13,18 @@ Array.prototype.shuffle = function (){
     }
 };
 
+// Return unique elements in an array
+function unique(arr) {
+    var u = {}, a = [];
+    for(var i = 0, l = arr.length; i < l; ++i){
+        if(!u.hasOwnProperty(arr[i])) {
+            a.push(arr[i]);
+            u[arr[i]] = 1;
+        }
+    }
+    return a;
+}
+
 // Function to check login
 function checkLogin($state, localStorageService) {
     var isLoggedIn = localStorageService.get('isLoggedIn');
@@ -176,6 +188,11 @@ angular.module('electionsApp')
 
         // All possible batches
         exports.batches = Object.keys(exports.senators);
+
+        // All possible posts
+        exports.posts = unique(exports.gensecs.map(function (item) {
+            return item.position;
+        }));
 
         // Get the names of senators
         exports.getSenators = function (batch) {
