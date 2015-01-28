@@ -4,6 +4,9 @@ angular.module('electionsApp')
         $scope.batches = dataFactory.batches;
         $scope.posts = dataFactory.posts;
 
+        // Function to get postName
+        $scope.getPostName = dataFactory.getPostName;
+
         // Get senators
         $scope.getSenators = function(batch) {
             return dataFactory.senators[batch];

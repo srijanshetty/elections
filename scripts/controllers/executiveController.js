@@ -6,8 +6,7 @@ angular.module('electionsApp')
         var currentState = $state.current.stateName;
 
         // Make a list of senators available to the view
-        $scope.candidateList = dataFactory.getCandidates(currentState);
-        $scope.candidateList.shuffle();
+        $scope.candidateList = _.shuffle(dataFactory.getCandidates(currentState));
 
         // Create the selectionData object
         $scope.selectionData = {

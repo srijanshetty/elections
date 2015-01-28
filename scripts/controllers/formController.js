@@ -14,6 +14,9 @@ angular.module('electionsApp')
         // Obtain the list of batches from the dataFactory
         vm.batches = dataFactory.batches;
 
+        // Obtain fullPost names
+        vm.getPostName = dataFactory.getPostName;
+
         // Make sure the correct stateName and stateCode are displayed everytime
         vm.stateName = $state.current.stateName;
         vm.stateCode = $state.current.stateCode;

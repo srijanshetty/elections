@@ -10,7 +10,7 @@ body
 
 /* numbered buttons */
 .state-name{
-    text-transform:uppercase;
+    text-transform:capitalize;
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
     margin-bottom: 20px;

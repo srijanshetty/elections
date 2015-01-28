@@ -1,8 +1,7 @@
 angular.module('electionsApp')
     .controller('senatorController', function senatorContoller($state, $scope, dataFactory, localStorageService, $modal) {
         // Make a list of senators available to the view
-        $scope.candidateList = dataFactory.getSenators($scope.formData.batch);
-        $scope.candidateList.shuffle();
+        $scope.candidateList = _.shuffle(dataFactory.getSenators($scope.formData.batch));
 
         // Setup the way the candidates will be displayed
         if ($scope.candidateList.length >= 3) {
