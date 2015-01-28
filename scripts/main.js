@@ -134,8 +134,7 @@ angular.module('electionsApp')
         'cultural': 'GenSec, Cultural Council',
         'science': 'GenSec, SnT Council',
         'games': 'GenSec, GnS Council',
-        'films': 'GenSec, FMC Council',
-        'senator': 'Senator'
+        'films': 'GenSec, FMC Council'
     };
 
     // Settings for the application
@@ -155,6 +154,11 @@ angular.module('electionsApp')
     exports.posts = _.uniq(exports.gensecs.map(function (item) {
         return item.position;
     }));
+
+    // Required entries in fullPost Names
+    exports.fullPostNames.senator = 'Senator';
+    exports.fullPostNames.batch = 'Batch';
+    exports.fullPostNames.submit = 'Submit';
 
     // Get the names of senators
     exports.getSenators = function (batch) {
