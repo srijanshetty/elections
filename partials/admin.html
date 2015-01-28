@@ -1,4 +1,3 @@
-<!-- form.html -->
 <!-- Static navbar -->
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -17,7 +16,6 @@
     <div class="row state-name text-center">
         <h3>Admin Dashboard</h3>
     </div>
-
 
     <!-- SENATORS -->
     <div class="result-container" ng-repeat="batch in batches">
@@ -44,6 +42,7 @@
             </tbody>
         </table>
     </div>
+
     <!-- No Preference -->
     <div class="result-container">
         <h3>No Preference</h3>
@@ -57,67 +56,18 @@
             </thead>
 
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>President</td>
-                    <td>{{getNoPreference('president')}}</td>
-                </tr>
-
-                <tr>
-                    <td>2</td>
-                    <td>Games</td>
-                    <td>{{getNoPreference('games')}}</td>
-                </tr>
-
-                <tr>
-                    <td>3</td>
-                    <td>Cultural</td>
-                    <td>{{getNoPreference('cultural')}}</td>
-                </tr>
-
-                <tr>
-                    <td>4</td>
-                    <td>Science</td>
-                    <td>{{getNoPreference('science')}}</td>
-                </tr>
-
-                <tr>
-                    <td>5</td>
-                    <td>Films</td>
-                    <td>{{getNoPreference('films')}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- President -->
-    <div class="result-container">
-        <h3>President</h3>
-        <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>1st Preference</th>
-                    <th>2nd Preference</th>
-                    <th>3rd Preference</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr ng-repeat="gensec in gensecs | filter:{ position: 'president'}">
+                <tr ng-repeat="post in posts">
                     <td>{{$index + 1}}</td>
-                    <td>{{gensec.name}}</td>
-                    <td>{{getVotes(gensec.id, 1)}}</td>
-                    <td>{{getVotes(gensec.id, 2)}}</td>
-                    <td>{{getVotes(gensec.id, 3)}}</td>
+                    <td class="capitalize">{{post}}</td>
+                    <td>{{getNoPreference(post)}}</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <div class="result-container">
-        <h3>GenSec, GnS Council</h3>
+    <!-- For executives -->
+    <div class="result-container" ng-repeat="post in posts">
+        <h3 class="capitalize">{{post}}</h3>
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
@@ -130,82 +80,7 @@
             </thead>
 
             <tbody>
-                <tr ng-repeat="gensec in gensecs | filter:{ position: 'games'}">
-                    <td>{{$index + 1}}</td>
-                    <td>{{gensec.name}}</td>
-                    <td>{{getVotes(gensec.id, 1)}}</td>
-                    <td>{{getVotes(gensec.id, 2)}}</td>
-                    <td>{{getVotes(gensec.id, 3)}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="result-container">
-        <h3>GenSec, Cult Council</h3>
-        <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>1st Preference</th>
-                    <th>2nd Preference</th>
-                    <th>3rd Preference</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr ng-repeat="gensec in gensecs | filter:{ position: 'cultural'}">
-                    <td>{{$index + 1}}</td>
-                    <td>{{gensec.name}}</td>
-                    <td>{{getVotes(gensec.id, 1)}}</td>
-                    <td>{{getVotes(gensec.id, 2)}}</td>
-                    <td>{{getVotes(gensec.id, 3)}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="result-container">
-        <h3>GenSec, SnT Council</h3>
-        <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>1st Preference</th>
-                    <th>2nd Preference</th>
-                    <th>3rd Preference</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr ng-repeat="gensec in gensecs | filter:{ position: 'science'}">
-                    <td>{{$index + 1}}</td>
-                    <td>{{gensec.name}}</td>
-                    <td>{{getVotes(gensec.id, 1)}}</td>
-                    <td>{{getVotes(gensec.id, 2)}}</td>
-                    <td>{{getVotes(gensec.id, 3)}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="result-container">
-        <h3>GenSec, FMC Council</h3>
-        <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>1st Preference</th>
-                    <th>2nd Preference</th>
-                    <th>3rd Preference</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr ng-repeat="gensec in gensecs | filter:{ position: 'films'}">
+                <tr ng-repeat="gensec in gensecs | filter:{ position: post}">
                     <td>{{$index + 1}}</td>
                     <td>{{gensec.name}}</td>
                     <td>{{getVotes(gensec.id, 1)}}</td>

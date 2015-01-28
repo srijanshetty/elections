@@ -2,6 +2,7 @@ angular.module('electionsApp')
     .controller('adminController', function adminController ($state, $scope, localStorageService, dataFactory) {
         $scope.gensecs = dataFactory.gensecs;
         $scope.batches = dataFactory.batches;
+        $scope.posts = dataFactory.posts;
 
         // Get senators
         $scope.getSenators = function(batch) {
