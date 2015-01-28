@@ -1,5 +1,14 @@
 angular.module('electionsApp')
     .controller('batchController', function batchController($state, $scope, localStorageService, $modal) {
+        // Skip this step if there are no items in the list
+        if ( !$scope.batches || $scope.batches.length === 0) {
+            // Set the next state
+            localStorageService.set('nextState', 'president');
+
+            // Redirect to president
+            $state.go('form.president');
+        }
+
         // Process the submit request
         $scope.processBatchSubmit = function () {
             // Check the validation of the form
