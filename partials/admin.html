@@ -58,7 +58,7 @@
             <tbody>
                 <tr ng-repeat="post in posts">
                     <td>{{$index + 1}}</td>
-                    <td class="capitalize">{{post}}</td>
+                    <td class="capitalize">{{getPostName(post)}}</td>
                     <td>{{getNoPreference(post)}}</td>
                 </tr>
             </tbody>
