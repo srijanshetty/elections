@@ -1,12 +1,12 @@
 {
-  "name": "iitk-general-elections",
-  "version": "0.0.1",
-  "description": "Voting system for IITK General Elections",
+  "name": "hall-8-hec-elections",
+  "version": "1.0.0",
+  "description": "Voting system for Hall 8 HEC elections",
   "main": "index.html",
   "scripts": {
     "post_install": "bower install",
     "test": "nwbuild -r . -v 0.11.5",
-    "build": "nwbuild -p 'win64,linux64' -o build ."
+    "build": "nwbuild -p 'win64,linux64' -o build . -v 0.11.5"
   },
   "keywords": [
     "IITK",
