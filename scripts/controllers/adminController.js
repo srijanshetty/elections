@@ -37,6 +37,6 @@ angular.module('electionsApp')
 
         // Clear all the data
         $scope.clear = function() {
-            // localStorageService.clearAll();
+            localStorageService.clearAll();
         };
     });
