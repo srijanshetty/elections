@@ -1,7 +1,7 @@
 {
-  "name": "hall-8-hec-elections",
+  "name": "hall-10-hec-elections",
   "version": "1.0.0",
-  "description": "Voting system for Hall 8 HEC elections",
+  "description": "Voting system for Hall 10 HEC elections",
   "main": "index.html",
   "scripts": {
     "post_install": "bower install",
