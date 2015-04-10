@@ -64,24 +64,51 @@ angular.module('electionsApp')
             controller: 'executiveController',
             stateCode: ++stateIndex,
             stateName: 'president',
-            nextState: 'mess',
+            nextState: 'maintenance',
             onEnter: checkLogin
         })
-        .state('form.mess', {
-            url: '/mess',
+        .state('form.maintenance', {
+            url: '/maintenance',
             templateUrl: 'partials/form-executive.html',
             controller: 'executiveController',
             stateCode: ++stateIndex,
-            stateName: 'mess',
-            nextState: 'canteen',
+            stateName: 'maintenance',
+            nextState: 'mess1',
             onEnter: checkLogin
         })
-        .state('form.canteen', {
-            url: '/canteen',
+        .state('form.mess1', {
+            url: '/mess1',
             templateUrl: 'partials/form-executive.html',
             controller: 'executiveController',
             stateCode: ++stateIndex,
-            stateName: 'canteen',
+            stateName: 'mess1',
+            nextState: 'mess2',
+            onEnter: checkLogin
+        })
+        .state('form.mess2', {
+            url: '/mess2',
+            templateUrl: 'partials/form-executive.html',
+            controller: 'executiveController',
+            stateCode: ++stateIndex,
+            stateName: 'mess2',
+            nextState: 'reading',
+            onEnter: checkLogin
+        })
+        .state('form.reading', {
+            url: '/reading',
+            templateUrl: 'partials/form-executive.html',
+            controller: 'executiveController',
+            stateCode: ++stateIndex,
+            stateName: 'reading',
+            nextState: 'cultural',
+            onEnter: checkLogin
+        })
+        .state('form.cultural', {
+            url: '/cultural',
+            templateUrl: 'partials/form-executive.html',
+            controller: 'executiveController',
+            stateCode: ++stateIndex,
+            stateName: 'cultural',
             nextState: 'sports',
             onEnter: checkLogin
         })
@@ -100,42 +127,15 @@ angular.module('electionsApp')
             controller: 'executiveController',
             stateCode: ++stateIndex,
             stateName: 'garden',
-            nextState: 'cultural',
+            nextState: 'snt',
             onEnter: checkLogin
         })
-        .state('form.cultural', {
-            url: '/cultural',
+        .state('form.snt', {
+            url: '/snt',
             templateUrl: 'partials/form-executive.html',
             controller: 'executiveController',
             stateCode: ++stateIndex,
-            stateName: 'cultural',
-            nextState: 'reading',
-            onEnter: checkLogin
-        })
-        .state('form.reading', {
-            url: '/reading',
-            templateUrl: 'partials/form-executive.html',
-            controller: 'executiveController',
-            stateCode: ++stateIndex,
-            stateName: 'reading',
-            nextState: 'computer',
-            onEnter: checkLogin
-        })
-        .state('form.computer', {
-            url: '/computer',
-            templateUrl: 'partials/form-executive.html',
-            controller: 'executiveController',
-            stateCode: ++stateIndex,
-            stateName: 'computer',
-            nextState: 'maintenance',
-            onEnter: checkLogin
-        })
-        .state('form.maintenance', {
-            url: '/maintenance',
-            templateUrl: 'partials/form-executive.html',
-            controller: 'executiveController',
-            stateCode: ++stateIndex,
-            stateName: 'maintenance',
+            stateName: 'snt',
             nextState: 'submit',
             onEnter: checkLogin
         })
@@ -158,35 +158,37 @@ angular.module('electionsApp')
 
     // The list of gensecs
     exports.gensecs = [
-        { 'id': 101, 'name': 'Anmol Thakur', 'position': 'president', 'image': 'assets/Anmol.jpg' },
-        { 'id': 102, 'name': 'Sahil Kalra', 'position': 'mess', 'image': 'assets/Sahil.jpg'},
-        { 'id': 103, 'name': 'Khun Sang Phukon', 'position': 'canteen', 'image': 'assets/Phukon.jpg'},
-        { 'id': 104, 'name': 'Ishan Choudhary', 'position': 'sports', 'image': 'assets/Ishan.jpg'},
-        { 'id': 105, 'name': 'Samir P Parmar', 'position': 'garden', 'image': 'assets/Samir.jpg'},
-        { 'id': 106, 'name': 'Alestin Mawre', 'position': 'cultural', 'image': 'assets/Alestin.jpg'},
-        { 'id': 107, 'name': 'Subhash Singh', 'position': 'reading', 'image': 'assets/Subhash.jpg'},
-        { 'id': 108, 'name': 'Mritunjay Kumar', 'position': 'computer', 'image': 'assets/Mritunjay.jpg'},
-        { 'id': 109, 'name': 'Rabeet Singh', 'position': 'maintenance', 'image': 'assets/Rabeet.jpg'}
+        { 'id': 101, 'name': 'Sushant Sirohi', 'position': 'president', 'image': 'assets/Sushant.jpg' },
+        { 'id': 102, 'name': 'Mayank Varshney', 'position': 'president', 'image': 'assets/Mayank.jpg' },
+        { 'id': 103, 'name': 'Saurabh', 'position': 'maintenance', 'image': 'assets/Saurabh.jpg' },
+        { 'id': 104, 'name': 'Tarun Yadav', 'position': 'maintenance', 'image': 'assets/Tarun.png' },
+        { 'id': 105, 'name': 'Jayant Jain', 'position': 'mess1', 'image': 'assets/Jayant.jpg'},
+        { 'id': 106, 'name': 'Prateek Jain', 'position': 'mess2', 'image': 'assets/Prateek.jpg'},
+        { 'id': 107, 'name': 'Shivam Singhal', 'position': 'reading', 'image': 'assets/Shivam.jpg'},
+        { 'id': 108, 'name': 'Nikhil Singh', 'position': 'cultural', 'image': 'assets/Nikhil.jpg'},
+        { 'id': 109, 'name': 'Arshil Abbas', 'position': 'sports', 'image': 'assets/Arshil.jpg'},
+        { 'id': 110, 'name': 'Brahmesh Joshi', 'position': 'garden', 'image': 'assets/Brahmesh.jpg'},
+        { 'id': 111, 'name': 'Suyash Karkare', 'position': 'snt', 'image': 'assets/Suyash.jpg'}
 
     ];
 
     // Full names of posts
     exports.fullPostNames = {
         'president' : 'President',
-        'mess': 'Mess Store and Supply',
-        'canteen': 'Chairman, Canteen Committee',
-        'sports': 'Chairman, Sports Committee',
-        'garden': 'Chairman, Garden Committee',
-        'cultural': 'Chairman, Cultural Committee',
-        'reading': 'Chairman, Reading Room',
-        'computer': 'Chairman, Computer Room',
-        'maintenance': 'Chairman, Maintenance',
+        'maintenance': 'Maintenance Secretary',
+        'mess1': 'Mess and Canteen Secretary - 1',
+        'mess2': 'Mess and Canteen Secretary - 2',
+        'reading': 'Reading Room Secretary',
+        'cultural': 'Cultural Secretary',
+        'sports': 'Sports Secretary',
+        'garden': 'Accounts and Gardening Secretary',
+        'snt': 'Science and Technology Secretary',
     };
 
     // Settings for the application
     exports.settings = {
         'mainPassword': 'LetsVote',
-        'cancelPassword': 'CancelThisVote',
+        'cancelPassword': 'LetsVote',
         'adminPassword': 'IAmGod'
     };
 
