@@ -64,69 +64,15 @@ angular.module('electionsApp')
             controller: 'executiveController',
             stateCode: ++stateIndex,
             stateName: 'president',
-            nextState: 'maintenance',
+            nextState: 'mess',
             onEnter: checkLogin
         })
-        .state('form.maintenance', {
-            url: '/maintenance',
+        .state('form.mess', {
+            url: '/mess',
             templateUrl: 'partials/form-executive.html',
             controller: 'executiveController',
             stateCode: ++stateIndex,
-            stateName: 'maintenance',
-            nextState: 'mess1',
-            onEnter: checkLogin
-        })
-        .state('form.mess1', {
-            url: '/mess1',
-            templateUrl: 'partials/form-executive.html',
-            controller: 'executiveController',
-            stateCode: ++stateIndex,
-            stateName: 'mess1',
-            nextState: 'mess2',
-            onEnter: checkLogin
-        })
-        .state('form.mess2', {
-            url: '/mess2',
-            templateUrl: 'partials/form-executive.html',
-            controller: 'executiveController',
-            stateCode: ++stateIndex,
-            stateName: 'mess2',
-            nextState: 'reading',
-            onEnter: checkLogin
-        })
-        .state('form.reading', {
-            url: '/reading',
-            templateUrl: 'partials/form-executive.html',
-            controller: 'executiveController',
-            stateCode: ++stateIndex,
-            stateName: 'reading',
-            nextState: 'cultural',
-            onEnter: checkLogin
-        })
-        .state('form.cultural', {
-            url: '/cultural',
-            templateUrl: 'partials/form-executive.html',
-            controller: 'executiveController',
-            stateCode: ++stateIndex,
-            stateName: 'cultural',
-            nextState: 'sports',
-            onEnter: checkLogin
-        })
-        .state('form.sports', {
-            url: '/sports',
-            templateUrl: 'partials/form-executive.html',
-            controller: 'executiveController',
-            stateCode: ++stateIndex,
-            stateName: 'sports',
-            nextState: 'garden',
-            onEnter: checkLogin
-        })
-        .state('form.garden', {
-            url: '/garden',
-            templateUrl: 'partials/form-executive.html',
-            controller: 'executiveController',
-            stateCode: ++stateIndex,
-            stateName: 'garden',
+            stateName: 'mess',
             nextState: 'snt',
             onEnter: checkLogin
         })
@@ -136,6 +82,42 @@ angular.module('electionsApp')
             controller: 'executiveController',
             stateCode: ++stateIndex,
             stateName: 'snt',
+            nextState: 'sports',
+            onEnter: checkLogin
+        })
+        .state('form.sports', {
+            url: '/sports',
+            templateUrl: 'partials/form-executive.html',
+            controller: 'executiveController',
+            stateCode: ++stateIndex,
+            stateName: 'sports',
+            nextState: 'accounts',
+            onEnter: checkLogin
+        })
+        .state('form.accounts', {
+            url: '/accounts',
+            templateUrl: 'partials/form-executive.html',
+            controller: 'executiveController',
+            stateCode: ++stateIndex,
+            stateName: 'accounts',
+            nextState: 'cultural',
+            onEnter: checkLogin
+        })
+        .state('form.cultural', {
+            url: '/cultural',
+            templateUrl: 'partials/form-executive.html',
+            controller: 'executiveController',
+            stateCode: ++stateIndex,
+            stateName: 'cultural',
+            nextState: 'computer',
+            onEnter: checkLogin
+        })
+        .state('form.computer', {
+            url: '/computer',
+            templateUrl: 'partials/form-executive.html',
+            controller: 'executiveController',
+            stateCode: ++stateIndex,
+            stateName: 'computer',
             nextState: 'submit',
             onEnter: checkLogin
         })
@@ -158,31 +140,30 @@ angular.module('electionsApp')
 
     // The list of gensecs
     exports.gensecs = [
-        { 'id': 101, 'name': 'Sushant Sirohi', 'position': 'president', 'image': 'assets/Sushant.jpg' },
-        { 'id': 102, 'name': 'Mayank Varshney', 'position': 'president', 'image': 'assets/Mayank.jpg' },
-        { 'id': 103, 'name': 'Saurabh', 'position': 'maintenance', 'image': 'assets/Saurabh.jpg' },
-        { 'id': 104, 'name': 'Tarun Yadav', 'position': 'maintenance', 'image': 'assets/Tarun.png' },
-        { 'id': 105, 'name': 'Jayant Jain', 'position': 'mess1', 'image': 'assets/Jayant.jpg'},
-        { 'id': 106, 'name': 'Prateek Jain', 'position': 'mess2', 'image': 'assets/Prateek.jpg'},
-        { 'id': 107, 'name': 'Shivam Singhal', 'position': 'reading', 'image': 'assets/Shivam.jpg'},
-        { 'id': 108, 'name': 'Nikhil Singh', 'position': 'cultural', 'image': 'assets/Nikhil.jpg'},
-        { 'id': 109, 'name': 'Arshil Abbas', 'position': 'sports', 'image': 'assets/Arshil.jpg'},
-        { 'id': 110, 'name': 'Brahmesh Joshi', 'position': 'garden', 'image': 'assets/Brahmesh.jpg'},
-        { 'id': 111, 'name': 'Suyash Karkare', 'position': 'snt', 'image': 'assets/Suyash.jpg'}
+        { 'id': 101, 'name': 'Kshitij Yadav', 'position': 'president', 'image': 'assets/Kshitij.jpg' },
+        { 'id': 102, 'name': 'Saiyam Surana', 'position': 'president', 'image': 'assets/Saiyam.jpg' },
+        { 'id': 103, 'name': 'Subham Todi', 'position': 'mess', 'image': 'assets/Subham.jpg' },
+        { 'id': 104, 'name': 'Yash Sharma', 'position': 'mess', 'image': 'assets/Yash.jpg' },
+        { 'id': 105, 'name': 'Anvesh Jadon', 'position': 'snt', 'image': 'assets/Anvesh.jpg'},
+        { 'id': 106, 'name': 'Shah Harsh Atul', 'position': 'snt', 'image': 'assets/Shah.jpg'},
+        { 'id': 107, 'name': 'Chinmai Garg', 'position': 'sports', 'image': 'assets/Chinmai.jpg'},
+        { 'id': 108, 'name': 'Abhinav Agrawal', 'position': 'accounts', 'image': 'assets/AbhinavA.jpg'},
+        { 'id': 109, 'name': 'Abhinav Garg', 'position': 'accounts', 'image': 'assets/AbhinavG.jpg'},
+        { 'id': 110, 'name': 'Pankaj Kumar', 'position': 'cultural', 'image': 'assets/Pankaj.jpg'},
+        { 'id': 111, 'name': 'Shubham Tyagi', 'position': 'cultural', 'image': 'assets/Shubham.jpg'},
+        { 'id': 112, 'name': 'Kartikey Bhargav', 'position': 'computer', 'image': 'assets/Kartikey.jpg'}
 
     ];
 
     // Full names of posts
     exports.fullPostNames = {
         'president' : 'President',
-        'maintenance': 'Maintenance Secretary',
-        'mess1': 'Mess and Canteen Secretary - 1',
-        'mess2': 'Mess and Canteen Secretary - 2',
-        'reading': 'Reading Room Secretary',
-        'cultural': 'Cultural Secretary',
-        'sports': 'Sports Secretary',
-        'garden': 'Accounts and Gardening Secretary',
+        'mess': 'Mess Secretary',
         'snt': 'Science and Technology Secretary',
+        'sports': 'Sports Secretary',
+        'accounts': 'Accounts Secretary',
+        'cultural': 'Cultural Secretary',
+        'computer': 'Computer and Reading Room Secretary'
     };
 
     // Settings for the application
