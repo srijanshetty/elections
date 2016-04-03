@@ -73,24 +73,24 @@ angular.module('electionsApp')
             controller: 'executiveController',
             stateCode: ++stateIndex,
             stateName: 'games',
-            nextState: 'mess',
+            nextState: 'cult',
             onEnter: checkLogin
         })
-        .state('form.mess', {
-            url: '/mess',
+        .state('form.cult', {
+            url: '/cult',
             templateUrl: 'partials/form-executive.html',
             controller: 'executiveController',
             stateCode: ++stateIndex,
-            stateName: 'mess',
-            nextState: 'reading',
+            stateName: 'cult',
+            nextState: 'snt',
             onEnter: checkLogin
         })
-        .state('form.reading', {
-            url: '/reading',
+        .state('form.snt', {
+            url: '/snt',
             templateUrl: 'partials/form-executive.html',
             controller: 'executiveController',
             stateCode: ++stateIndex,
-            stateName: 'reading',
+            stateName: 'snt',
             nextState: 'maintenance',
             onEnter: checkLogin
         })
@@ -100,15 +100,24 @@ angular.module('electionsApp')
             controller: 'executiveController',
             stateCode: ++stateIndex,
             stateName: 'maintenance',
-            nextState: 'computer',
+            nextState: 'acc',
             onEnter: checkLogin
         })
-        .state('form.computer', {
-            url: '/computer',
+        .state('form.acc', {
+            url: '/acc',
             templateUrl: 'partials/form-executive.html',
             controller: 'executiveController',
             stateCode: ++stateIndex,
-            stateName: 'computer',
+            stateName: 'acc',
+            nextState: 'convener',
+            onEnter: checkLogin
+        })
+        .state('form.convener', {
+            url: '/convener',
+            templateUrl: 'partials/form-executive.html',
+            controller: 'executiveController',
+            stateCode: ++stateIndex,
+            stateName: 'convener',
             nextState: 'submit',
             onEnter: checkLogin
         })
@@ -131,30 +140,37 @@ angular.module('electionsApp')
 
     // The list of gensecs
     exports.gensecs = [
-        { 'id': 101, 'name': 'Jitendra Katiyar', 'position': 'president', 'image': 'assets/Jitendra.jpg' },
-        { 'id': 102, 'name': 'Sateesh Kumar Yadav', 'position': 'computer', 'image': 'assets/Sateesh.jpg'},
-        { 'id': 103, 'name': 'Yaswanth Kumar Penke', 'position': 'games', 'image': 'assets/Yaswanth.jpg'},
-        { 'id': 104, 'name': 'Aditya Desai', 'position': 'maintenance', 'image': 'assets/Aditya.jpg'},
-        { 'id': 105, 'name': 'Amarjit Prakashrao Kene', 'position': 'mess', 'image': 'assets/Amarjit.jpg'},
-        { 'id': 106, 'name': 'Anand Prakash Dwivedi', 'position': 'reading', 'image': 'assets/Anand.jpg'}
-
+        { 'id': 101, 'name': 'Tarun Sharma', 'position': 'president', 'image': 'assets/TS.jpg' },
+        { 'id': 102, 'name': 'Siddhant Naik', 'position': 'president', 'image': 'assets/SN.jpg' },
+        { 'id': 103, 'name': 'Aryan Goyal', 'position': 'president', 'image': 'assets/AG.jpg' },
+        { 'id': 104, 'name': 'Tarundeep Singh Gill', 'position': 'games', 'image': 'assets/TSG.jpg' },
+        { 'id': 105, 'name': 'Rajat Pandey', 'position': 'games', 'image': 'assets/RP.jpg' },
+        { 'id': 106, 'name': 'Anil Kumar', 'position': 'games', 'image': 'assets/AK.jpg' },
+        { 'id': 107, 'name': 'Shrey Agrawal', 'position': 'cult', 'image': 'assets/SA.jpg' },
+        { 'id': 108, 'name': 'Saurabh Dubey', 'position': 'cult', 'image': 'assets/SD.jpg' },
+        { 'id': 109, 'name': 'Prannay Khosla', 'position': 'snt', 'image': 'assets/PK_s.jpg' },
+        { 'id': 110, 'name': 'Prashant Kumar', 'position': 'maintenance', 'image': 'assets/PK_m.jpg' },
+        { 'id': 111, 'name': 'Gaurav Padnekar', 'position': 'maintenance', 'image': 'assets/GP.jpg' },
+        { 'id': 112, 'name': 'Swastid Sharma', 'position': 'acc', 'image': 'assets/SS.jpg' },
+        { 'id': 113, 'name': 'Deepak Darji', 'position': 'convener', 'image': 'assets/DD.jpg' },
     ];
 
     // Full names of posts
     exports.fullPostNames = {
-        'president' : 'President & Convener, HEC',
-        'computer': 'Computer Room Secretary',
+        'president' : 'President',
         'games': 'Games & Sports Secretary',
+        'cult': 'Cultural Secretary',
+        'snt': 'Science and Technology Secretary',
         'maintenance': 'Maintenance Secretary',
-        'mess': 'Mess Secretary',
-        'reading': 'Reading Room & Circulation Library Secretary'
+        'acc': 'Accounts Secretary',
+        'convener': 'Convener'
     };
 
     // Settings for the application
     exports.settings = {
-        'mainPassword': 'LetsVote',
-        'cancelPassword': 'CancelThisVote',
-        'adminPassword': 'IAmGod'
+        'mainPassword': 'hall2bakait',
+        'cancelPassword': 'cancel',
+        'adminPassword': 'ceo_swag'
     };
 
     // total Number of states
