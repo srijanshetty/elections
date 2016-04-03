@@ -28,8 +28,8 @@ angular.module('electionsApp')
                     localStorageService.set(item + 'NoPreference', positionNoPreference + 1);
                 } else {
                     setPreference($scope.formData[item + 'First'], 1);
-                    setPreference($scope.formData[item + 'Second'], 1);
-                    setPreference($scope.formData[item + 'Third'], 1);
+                    setPreference($scope.formData[item + 'Second'], 2);
+                    setPreference($scope.formData[item + 'Third'], 3);
                 }
 
             });
