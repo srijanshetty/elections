@@ -82,15 +82,33 @@ angular.module('electionsApp')
             controller: 'executiveController',
             stateCode: ++stateIndex,
             stateName: 'cult',
-            nextState: 'snt',
+            nextState: 'readingcc',
             onEnter: checkLogin
         })
-        .state('form.snt', {
-            url: '/snt',
+        .state('form.readingcc', {
+            url: '/readingcc',
             templateUrl: 'partials/form-executive.html',
             controller: 'executiveController',
             stateCode: ++stateIndex,
-            stateName: 'snt',
+            stateName: 'readingcc',
+            nextState: 'messcanteen',
+            onEnter: checkLogin
+        })
+        .state('form.messcanteen', {
+            url: '/messcanteen',
+            templateUrl: 'partials/form-executive.html',
+            controller: 'executiveController',
+            stateCode: ++stateIndex,
+            stateName: 'messcanteen',
+            nextState: 'messonly',
+            onEnter: checkLogin
+        })
+        .state('form.messonly', {
+            url: '/messonly',
+            templateUrl: 'partials/form-executive.html',
+            controller: 'executiveController',
+            stateCode: ++stateIndex,
+            stateName: 'messonly',
             nextState: 'maintenance',
             onEnter: checkLogin
         })
@@ -109,15 +127,6 @@ angular.module('electionsApp')
             controller: 'executiveController',
             stateCode: ++stateIndex,
             stateName: 'acc',
-            nextState: 'convener',
-            onEnter: checkLogin
-        })
-        .state('form.convener', {
-            url: '/convener',
-            templateUrl: 'partials/form-executive.html',
-            controller: 'executiveController',
-            stateCode: ++stateIndex,
-            stateName: 'convener',
             nextState: 'submit',
             onEnter: checkLogin
         })
@@ -140,37 +149,42 @@ angular.module('electionsApp')
 
     // The list of gensecs
     exports.gensecs = [
-        { 'id': 101, 'name': 'Tarun Sharma', 'position': 'president', 'image': 'assets/TS.jpg' },
-        { 'id': 102, 'name': 'Siddhant Naik', 'position': 'president', 'image': 'assets/SN.jpg' },
-        { 'id': 103, 'name': 'Aryan Goyal', 'position': 'president', 'image': 'assets/AG.jpg' },
-        { 'id': 104, 'name': 'Tarundeep Singh Gill', 'position': 'games', 'image': 'assets/TSG.jpg' },
-        { 'id': 105, 'name': 'Rajat Pandey', 'position': 'games', 'image': 'assets/RP.jpg' },
-        { 'id': 106, 'name': 'Anil Kumar', 'position': 'games', 'image': 'assets/AK.jpg' },
-        { 'id': 107, 'name': 'Shrey Agrawal', 'position': 'cult', 'image': 'assets/SA.jpg' },
-        { 'id': 108, 'name': 'Saurabh Dubey', 'position': 'cult', 'image': 'assets/SD.jpg' },
-        { 'id': 109, 'name': 'Prannay Khosla', 'position': 'snt', 'image': 'assets/PK_s.jpg' },
-        { 'id': 110, 'name': 'Prashant Kumar', 'position': 'maintenance', 'image': 'assets/PK_m.jpg' },
-        { 'id': 111, 'name': 'Gaurav Padnekar', 'position': 'maintenance', 'image': 'assets/GP.jpg' },
-        { 'id': 112, 'name': 'Swastid Sharma', 'position': 'acc', 'image': 'assets/SS.jpg' },
-        { 'id': 113, 'name': 'Deepak Darji', 'position': 'convener', 'image': 'assets/DD.jpg' },
+        { 'id': 101, 'name': 'Sachin Kumar', 'position': 'president', 'image': 'assets/sachin_kumar.jpg' },
+        { 'id': 102, 'name': 'Sayan Bhattacharyya', 'position': 'president', 'image': 'assets/sayan_bhattacharyya.jpg' },
+        { 'id': 104, 'name': 'Arun Kumar Agarwal', 'position': 'messcanteen', 'image': 'assets/arun_kumar.jpg' },
+        { 'id': 105, 'name': 'Anurag', 'position': 'messcanteen', 'image': 'assets/anurag.jpg' },
+        { 'id': 106, 'name': 'Ashish Pal', 'position': 'messonly', 'image': 'assets/ashish_pal.jpg' },
+        { 'id': 107, 'name': 'Danish Abbas', 'position': 'messonly', 'image': 'assets/danish_abbas.jpg' },
+        { 'id': 108, 'name': 'Ras Dwivedi', 'position': 'maintenance', 'image': 'assets/ras_dwivedi.jpg' },
+        { 'id': 109, 'name': 'Ritesh Verma', 'position': 'maintenance', 'image': 'assets/ritesh_verma.jpg' },
+        { 'id': 110, 'name': 'Daevesh Kumar Singh', 'position': 'cult', 'image': 'assets/devesh_kumar.jpg' },
+        { 'id': 111, 'name': 'Taha Sheikh', 'position': 'cult', 'image': 'assets/taha_sheikh.jpg' },
+        { 'id': 112, 'name': 'Parveen', 'position': 'readingcc', 'image': 'assets/parveen.jpg' },
+        { 'id': 113, 'name': 'Suvasis Den', 'position': 'readingcc', 'image': 'assets/suvasis_den.jpg' },
+        { 'id': 114, 'name': 'Abhishek Joshi', 'position': 'games', 'image': 'assets/abhishek_joshi.jpg' },
+        { 'id': 115, 'name': 'Rahul', 'position': 'games', 'image': 'assets/rahul.jpg' },
+        { 'id': 116, 'name': 'Zoting Chetan Prakash', 'position': 'acc', 'image': 'assets/zoting_chetan.jpg' },
     ];
 
     // Full names of posts
     exports.fullPostNames = {
-        'president' : 'President',
-        'games': 'Games & Sports Secretary',
-        'cult': 'Cultural Secretary',
-        'snt': 'Science and Technology Secretary',
-        'maintenance': 'Maintenance Secretary',
-        'acc': 'Accounts Secretary',
-        'convener': 'Convener'
+      'president' : 'President',
+      'games': 'Sports Secretary',
+      'cult': 'Cultural Secretary',
+      'snt': 'Science and Technology Secretary',
+      'maintenance': 'Maintenance Secretary',
+      'acc': 'Accounts Secretary',
+      'convener': 'Convener',
+      'messcanteen': 'Mess and Canteen Secretary',
+      'messonly': 'Mess secretary',
+      'readingcc': 'Reading room and CC secretary'
     };
 
     // Settings for the application
     exports.settings = {
-        'mainPassword': 'hall2bakait',
-        'cancelPassword': 'cancel',
-        'adminPassword': 'ceo_swag'
+        'mainPassword': 'halldas',
+        'cancelPassword': 'cancelkaro',
+        'adminPassword': 'ceo_sweg'
     };
 
     // total Number of states

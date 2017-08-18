@@ -1,5 +1,5 @@
 {
-  "name": "hall-8-hec-elections",
+  "name": "hall-10-hec-elections",
   "version": "1.0.0",
   "description": "Voting system for Hall 8 HEC elections",
   "main": "index.html",
@@ -33,5 +33,6 @@
   "license": "MIT",
   "devDependencies": {
     "node-webkit-builder": "^1.0.7"
-  }
+  },
+  "dependencies": {}
 }
